@@ -4,16 +4,15 @@ import styles from '../styles/pnf.module.scss'
 import logo from '../public/logo_center.png'
 import four from '../public/4.png'
 
-
 const Error = () => {
     const [counter, setCounter] = useState(5);
-
     useEffect(() => {
-      const interval = setInterval(() => {
-        setCounter((counter) => counter - 1);
-      }, 1000);
-      return () => clearInterval(interval);
-    }, []);
+      if (counter > 0) {
+        setTimeout(() => setCounter(counter - 1), 1000);
+      } else {
+        setCounter(0);
+      }
+    },[counter]);
     
     return (
       <div className={styles.container}>
