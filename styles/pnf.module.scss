@@ -2,7 +2,6 @@
     background-color: rgb(1, 10, 53);
     margin: 0;
     padding: 0;
-    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,26 +12,28 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 35%;
+        padding: 2rem 2rem 0 2rem;
         
         .img{
-            width: 100%;
             border-radius: 20rem;
-            border: 5px solid rgb(85, 85, 85);
-            height: 90%;
+            border: 0.5vw solid rgb(85, 85, 85);
+            height: auto;
+            width: 10vw;
+            width: 100%;
+            max-width: 10vw;
+            padding: 2%;
             background: rgb(0, 0, 0);
         }
         .img_four{
-            width: 100%;
-            height: 100%;
+            width: 21vw;
+            height: auto;
         }
     }
     .text{
         color: rgb(255, 255, 255);
-        font-size: 2rem;
+        font-size: 3vh;
+        padding: 3rem;
         font-weight: 500;
-        margin: 0;
-        padding: 0;
         text-align: center;
         margin-top: 2rem;
     }
