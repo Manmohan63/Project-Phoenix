@@ -17,12 +17,12 @@ const Error = () => {
       }
     },[counter]);
     
-    // const router = useRouter();
-    // useEffect(() => {
-    //   if (counter === 0) {
-    //     router.push('/');
-    //   }
-    // });
+    const router = useRouter();
+    useEffect(() => {
+      if (counter === 0) {
+        router.push('/');
+      }
+    });
 
     return (
       <>
