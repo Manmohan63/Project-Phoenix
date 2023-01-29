@@ -1,9 +1,10 @@
 import React from 'react'
 import Link from 'next/link';
+import styles from '../styles/Sidebar.module.scss'
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className={styles["sidebar"]}>
         <Link href="/">Home</Link>
         <Link href="/chatroom">Chatroom</Link>
         <Link href="/calender">Calender</Link>
