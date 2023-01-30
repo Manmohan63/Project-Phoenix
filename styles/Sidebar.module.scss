@@ -1,0 +1,14 @@
+@import "./App.module.scss";
+.sidebar{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding-top: $nh;
+    width: $sw;
+
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    
+    background-color: rgb(255, 91, 91);
+}

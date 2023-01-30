@@ -1,0 +1,32 @@
+@import "./App.module.scss";
+.Navbar{
+    //positioning & size of navbar 
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    overflow: auto;
+    // height: $nh;
+    z-index: 2;
+
+    //inner content
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(247, 142, 142);
+
+    .bird{
+        height:auto;
+        width: 5vw;
+    }
+    .name{
+        height:auto;
+        width: 10vw;
+    }
+
+    .options{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
