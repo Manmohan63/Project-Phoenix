@@ -1,5 +1,6 @@
+@import "./App.module.scss";
 .container{
-    background-color: rgb(1, 10, 53);
+    background-color: $blue_2;
     margin: 0;
     padding: 0;
     height: 100vh;

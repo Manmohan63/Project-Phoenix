@@ -8,21 +8,25 @@ import name from '../public/pic5_zoom.png'
 const Navbar = () => {
   return (
     <div className={styles["Navbar"]}>
-      <Link href='/'>
-        <Image
-          src={logo}
-          alt="Phoenix"
-          className={styles["bird"]}
-        />
-        <Image
-          src={name}
-          alt="logo"
-          className={styles["name"]}
-        />
-      </Link>
-      <div className={styles["options"]}>
-        <Link href='/'>Sign up </Link> |
-        <Link href='/'> Sign in</Link>
+      <div className={styles["container"]}>
+        <div className={styles["img_container"]}>
+          <Link href='/'>
+            <Image
+              src={logo}
+              alt="Phoenix"
+              className={styles["bird"]}
+            />
+            <Image
+              src={name}
+              alt="logo"
+              className={styles["name"]}
+            />
+          </Link>
+        </div>
+        <div className={styles["options"]}>
+          <Link href='/' className={styles["first"]}>Sign up&nbsp;</Link>
+          <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link>
+        </div>
       </div>
     </div>
   )
