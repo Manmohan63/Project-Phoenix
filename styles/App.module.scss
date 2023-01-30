@@ -1,3 +1,7 @@
+$sw: 22vw;
+$nh: 4vw;
 .Layout{
-    margin-left: 300px;
+    padding-left: calc($sw);
+    padding-top: calc($nh + 0.5px);
+    background: rgb(249, 0, 0);
 }
