@@ -2,7 +2,12 @@ import React from 'react'
 import Link from 'next/link';
 import styles from '../styles/Sidebar.module.scss'
 import Image from 'next/image';
-import home from '../public/Home.png'
+import home from '../public/Sidebar Icons/Home.png'
+import chatroom from '../public/Sidebar Icons/Chatroom.png'
+import calender from '../public/Sidebar Icons/calender.png'
+import resources from '../public/Sidebar Icons/resources.png'
+import more from '../public/Sidebar Icons/more.png'
+import settings from '../public/Sidebar Icons/settings.png'
 
 const Sidebar = () => {
   return (
@@ -14,14 +19,59 @@ const Sidebar = () => {
             alt="home"
             className={styles["images"]}
           />
-          <span>Home</span>
+          <div>Home</div>
         </Link>
       </div>
-      <Link href="/chatroom">Chatroom</Link>
-      <Link href="/calender">Calender</Link>
-      <Link href="/resources">Resources</Link>
-      <Link href="/more">More</Link>
-      <Link href="/settings">Settings</Link>
+      <div className={styles["hello"]}>
+        <Link href="/chatroom">
+          <Image
+            src={chatroom}
+            alt="chatroom"
+            className={styles["images"]}
+          />
+          <div>Chatroom</div>
+        </Link>
+      </div>
+      <div className={styles["hello"]}>
+        <Link href="/calender">
+          <Image
+            src={calender}
+            alt="calender"
+            className={styles["images"]}
+          />
+          <div>Calender</div>
+        </Link>
+      </div>
+      <div className={styles["hello"]}>
+        <Link href="/Resources">
+          <Image
+            src={resources}
+            alt="Resources"
+            className={styles["images"]}
+          />
+          <div>Resources</div>
+        </Link>
+      </div>
+      <div className={styles["hello"]}>
+        <Link href="/more">
+          <Image
+            src={more}
+            alt="more"
+            className={styles["images"]}
+          />
+          <div>More</div>
+        </Link>
+      </div>
+      <div className={styles["hello"]}>
+        <Link href="/settings">
+          <Image
+            src={settings}
+            alt="settings"
+            className={styles["images"]}
+          />
+          <div>settings</div>
+        </Link>
+      </div>
     </div>
   )
 }
