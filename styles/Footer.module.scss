@@ -1,6 +1,45 @@
+@import "./App.module.scss";
 .Footer{
     position: relative;
     bottom: 0;
     right: 0;
-    background: rgb(80, 39, 39);
+
+    border-top: 2px solid $gold;
+    border-left: 2px solid $gold;
+    border-right: 2px solid $gold;
+    background-color: #0b005d;
+    background-image: linear-gradient(200deg, #0c0063 0%, #0b005d 85%);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $gold;
+        flex-direction: column;
+
+        .icons{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.4rem 10rem;
+            color: $gold;
+            width: 45%;
+            
+            .icon{
+                font-size: 2rem;
+                color: $gold;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    color: white;
+                }
+            }
+        }
+    }
 }

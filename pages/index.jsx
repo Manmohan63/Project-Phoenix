@@ -1,36 +1,10 @@
-// import React from 'react'
+import React from 'react'
+import styles from '../styles/Index.module.scss'
 
-// const index = () => {
-//   return (
-//     <div>index hello hello</div>
-//   )
-// }
-
-// export default index
-// import React, { useState, useEffect } from 'react';
-
-// const Codeforces = () => {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       const res = await fetch('https://codeforces.com/api/user.info?handles=ninjamayank');
-//       const result = await res.json();
-//       setData(result.result);
-//     }
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <div>
-//       {data.map(item => (
-//         <div key={item.handle}>
-//           <p>{item.handle}</p>
-//           <p>{item.rank}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Codeforces;
+const index = () => {
+  return (
+    <div className={styles["div"]}>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea libero tempore ad nam perferendis soluta modi, eum voluptatum explicabo voluptatem impedit, voluptatibus quae facere! Debitis exercitationem, a ad maiores eligendi eius ea temporibus autem pariatur tempore recusandae quaerat non, veritatis nulla at consequatur necessitatibus quas natus rem laboriosam eum! Soluta sit, quasi cumque eligendi minus, magni labore adipisci hic modi at corrupti, laborum repellat explicabo fuga iste itaque obcaecati provident? Voluptatibus voluptate amet aliquam sequi exercitationem necessitatibus, porro, perferendis explicabo atque nobis eligendi eum itaque eaque commodi iusto! Culpa similique perferendis vel quae non recusandae veritatis, ducimus quaerat? Inventore praesentium consequuntur minima tempore error odit rerum adipisci! Reprehenderit voluptatibus in aperiam nam sint numquam corporis, perferendis eum animi doloribus debitis at assumenda explicabo obcaecati commodi hic quaerat! Voluptas dignissimos vitae nesciunt. Voluptates laborum quasi minima suscipit voluptas accusamus totam beatae, nesciunt illo earum consectetur ducimus magni qui libero assumenda voluptate quaerat impedit cum! Quidem impedit, quod aliquam quas praesentium libero inventore fugiat architecto explicabo perspiciatis cumque obcaecati corporis reprehenderit, a suscipit nihil, assumenda incidunt? Aspernatur facere nam tempora quas est quibusdam obcaecati, tenetur natus, ex quia architecto dolor nemo itaque debitis, magni illo deserunt necessitatibus nulla ducimus iste ipsam tempore. Iure expedita unde, sit autem aliquam consequuntur laudantium nostrum totam accusantium exercitationem aliquid cumque dolore magni deserunt. Blanditiis voluptatibus consectetur vitae culpa aliquam debitis, sit doloremque rem alias nihil eum incidunt voluptatem iusto repellat, error, reiciendis nemo modi voluptas facere hic itaque totam sint magnam saepe. Doloribus id nostrum laboriosam architecto rem fugiat maiores debitis inventore iure a ipsam modi soluta veritatis beatae hic, sit veniam unde. Omnis dolores similique inventore labore iste dolor nihil commodi modi aut, quidem architecto dolorem accusamus aspernatur atque alias. Laboriosam nobis magnam pariatur soluta id vel impedit rem quibusdam dolore delectus commodi consequuntur nisi itaque, ab beatae quam laudantium ad magni cum in suscipit saepe necessitatibus repudiandae unde? Soluta nihil obcaecati, cum blanditiis, eaque reprehenderit architecto quos optio, quaerat non dicta nesciunt repellat minima harum nam ut placeat sunt magnam. Autem, expedita. Quis perferendis accusantium non sed dolorum commodi, soluta inventore tempore quia quasi numquam ipsam eveniet nihil explicabo et cupiditate accusamus assumenda repellat consequuntur unde pariatur expedita minus quae! Iusto rem eligendi dolore commodi beatae! Nostrum iste at aliquid earum aperiam. Tenetur veritatis exercitationem placeat explicabo vitae temporibus minima, laudantium reprehenderit quo velit debitis ratione voluptatem minus ipsum, blanditiis pariatur repudiandae consequatur. Fuga molestias eaque repellat deleniti itaque nesciunt magni, suscipit ab ipsum dolores dolorem deserunt facere delectus vitae officia excepturi molestiae magnam quos sequi aliquam odio eligendi modi officiis praesentium? Fuga fugit totam molestiae, modi, hic ut praesentium exercitationem obcaecati magni ipsum qui voluptatem incidunt quae animi beatae, a rerum veniam aliquid? Exercitationem quidem delectus in, sequi sint officiis magni sed iusto corporis ea saepe dolores, est culpa voluptatibus cum similique molestias earum commodi minus ratione. Aliquam, ducimus ipsa labore enim dolorem totam amet atque eius sequi nihil nobis nostrum aliquid ullam porro sunt accusantium, laboriosam dicta voluptas cumque aut? Suscipit, rem?
+    </div>
+  )
+}

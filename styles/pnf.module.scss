@@ -1,6 +1,7 @@
 @import "./App.module.scss";
 .container{
-    background-color: $blue_2;
+    background-color: #060031;
+    background-image: linear-gradient(200deg, #0c0063 0%, #060031 85%);
     margin: 0;
     padding: 0;
     height: 100vh;

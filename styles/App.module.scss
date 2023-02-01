@@ -1,4 +1,4 @@
-$sw: 10vw;
+$sw: 8vw;
 $nh: 4vw;
 $gold: #dbad69;
 $blue_1: #010a35;
@@ -6,5 +6,10 @@ $blue_2: #060031;
 .Layout{
     padding-left: calc($sw);
     padding-top: calc($nh + 0.5px);
-    background: rgb(249, 0, 0);
+    color: $gold;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory; 
+    & * {
+        scroll-snap-align: start;
+    }
 }

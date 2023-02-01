@@ -13,22 +13,36 @@
     align-items: center;
     
     background-color: #060031;
-    background-image: linear-gradient(315deg, #0c0063 0%, #060031 85%);
+    background-image: linear-gradient(-215deg, #0c0063 0%, #060031 85%);
     color: $gold;
     font-size: 1rem;
+    border-right: 1px solid $gold;
 
     .hello{
         border: 2px solid $gold;
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 5vw;
+        width: 5vw;
+        border-radius: 0.5rem;
         flex-direction: column;
-        height: 8vw;
-        width: 8vw;
+        padding: 5px;
+        transition: all 0.5ms ease-in-out;
 
         .images{
-            width: 5vw;
+            width: 3.5vw;
             height: auto;
+        }
+
+        &:hover{
+            box-shadow: $gold 0px 1px 4px, $gold 0px 0px 0px 3px;
+        }
+
+        .textcontainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
