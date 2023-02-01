@@ -8,3 +8,5 @@ const index = () => {
     </div>
   )
 }
+
+export default index

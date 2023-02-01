@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { initializeApp } from "firebase/app";
+//import styles from '../styles/chatroom.module.scss'
 import {
   getFirestore,
   collection,
@@ -39,16 +40,30 @@ const firebaseApp=initializeApp({
 //const app = initializeApp(firebaseApp);
 const auth = getAuth();
 const firestore = getFirestore(firebaseApp);
+// function App() {
+//   const [isSignedIn, setIsSignedIn] = useState(false);
+
+//   useEffect(() => {
+//     firebase.auth().onAuthStateChanged(user => {
+//       if (user) {
+//         setIsSignedIn(true);
+//       } else {
+//         setIsSignedIn(false);
+//       }
+//     });
+//   }, []);
+// };
 const Chat = () => {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
       <header>
         <h1>Chatroom</h1>
-        <SignOut />
+        {/* <SignOut /> */}
       </header>
 
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      {/* <ChatRoom/> */}
     </div>
   );
 };
@@ -60,15 +75,16 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>
-        Sign in with Google
+      <button className='sign-in' onClick={signInWithGoogle}>
+        Sign in 
       </button>
-      <p>
+      {/* <p>
         Do not violate the community guidelines or you will be banned for life!!
-      </p>
+      </p> */}
     </>
   );
 }
+
 
 function SignOut() {
   return (
@@ -157,7 +173,9 @@ function ChatMessage(props) {
   );
 }
 
-export default Chat;
+
+export {SignIn,SignOut};
+export default Chat
 
 
 
