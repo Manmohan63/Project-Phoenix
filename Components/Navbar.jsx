@@ -6,26 +6,7 @@ import logo from '../public/logo.png'
 import name from '../public/pic5_zoom.png'
 import { SignIn } from '@/pages/chatroom'
 import{SignOut} from '@/pages/chatroom'
-//import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// const auth = getAuth();
 
-// function SignIn() {
-//   const signInWithGoogle = () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider);
-//   };
-
-//   return (
-//     <>
-//       <button className={styles["first"]} onClick={signInWithGoogle}>
-//         Sign in 
-//       </button>
-//       {/* <p>
-//         Do not violate the community guidelines or you will be banned for life!!
-//       </p> */}
-//     </>
-//   );
-// }
 
 const Navbar = () => {
   
