@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { initializeApp } from "firebase/app";
+//import styles from '../styles/chatroom.module.scss'
 import {
   getFirestore,
   collection,
@@ -31,16 +32,18 @@ const firebaseApp=initializeApp({
 //const app = initializeApp(firebaseApp);
 const auth = getAuth();
 const firestore = getFirestore(firebaseApp);
+
 const Chat = () => {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
       <header>
         <h1>Chatroom</h1>
-        <SignOut />
+        {/* <SignOut /> */}
       </header>
 
       <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      {/* <ChatRoom/> */}
     </div>
   );
 };
@@ -52,15 +55,14 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>
-        Sign in with Google
+      <button className='sign-in' onClick={signInWithGoogle}>
+        Sign in 
       </button>
-      <p>
-        Do not violate the community guidelines or you will be banned for life!
-      </p>
+     
     </>
   );
 }
+
 
 function SignOut() {
   return (
@@ -77,14 +79,11 @@ function ChatRoom() {
   const messagesRef = collection(firestore, "messages");
   const q = query(messagesRef, orderBy("createdAt"), limit(25));
 
-  //const [messages] = useCollectionData(q, { idField: 'id' });
+  
   const [messages, setMessages] = useState([]);
   const [formValue, setFormValue] = useState("");
 
-  //const [messages, setMessages] = useState([]);
-  //const [formValue, setFormValue] = useState("");
-  //const messagesRef = collection(firebaseFirestore, "chat-messages");
-  //const q = query(messagesRef, orderBy("createdAt"), limit(25));
+ 
   getDocs(q).then((response) => {
     setMessages(response.docs.map((doc) => doc.data()));
   });
@@ -94,12 +93,6 @@ function ChatRoom() {
 
     const { uid } = auth.currentUser;
 
-    // await messagesRef.add({
-    //   text: formValue,
-    //   createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    //   uid,
-
-    // })
     await addDoc(collection(firestore, "messages"), {
       text: formValue,
       createdAt: serverTimestamp(),
@@ -142,14 +135,16 @@ function ChatMessage(props) {
   return (
     <>
       <div className={`message ${messageClass}`}>
-        {/* <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} /> */}
+      
         <p>{text}</p>
       </div>
     </>
   );
 }
 
-export default Chat;
+
+export {SignIn,SignOut};
+export default Chat
 
 
 

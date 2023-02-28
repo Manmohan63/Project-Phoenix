@@ -4,8 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/logo.png'
 import name from '../public/pic5_zoom.png'
+import { SignIn } from '@/pages/chatroom'
+import{SignOut} from '@/pages/chatroom'
+
 
 const Navbar = () => {
+  
   return (
     <div className={styles["Navbar"]}>
       <div className={styles["container"]}>
@@ -24,8 +28,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div className={styles["options"]}>
-          <Link href='/' className={styles["first"]} title={"Sign up"}>Sign up&nbsp;</Link>
-          <Link href='/' className={styles["second"]} title={"Sign in"}>&nbsp;Sign in</Link>
+          <Link href='/' className={styles["first"]}>Sign up&nbsp;</Link>
+          <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link>
         </div>
       </div>
     </div>
