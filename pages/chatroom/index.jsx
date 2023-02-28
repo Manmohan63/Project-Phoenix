@@ -54,7 +54,7 @@ const Chat = () => {
       {/* <ChatRoom/> */}
     </div>
   );
-};
+  }
 function SignIn() {
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
