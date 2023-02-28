@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className={styles["Navbar"]}>
       <div className={styles["container"]}>
-        <div className={styles["img_container"]}>
+        <div className={styles["img_container"]} title={"CP UnOfficial"}>
           <Link href='/'>
             <Image
               src={logo}
@@ -29,10 +29,7 @@ const Navbar = () => {
         </div>
         <div className={styles["options"]}>
           <Link href='/' className={styles["first"]}>Sign up&nbsp;</Link>
-         
-          {/* <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link> */}
-          <SignIn/>
-          <SignOut/>
+          <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link>
         </div>
       </div>
     </div>
