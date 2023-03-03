@@ -11,6 +11,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    extend: {
+      'main': '#dbad69',
+      'dark__blue': '#060031',
+      'gradient__light__blue': '#080042'
+    },
+
   },
   plugins: [],
 }

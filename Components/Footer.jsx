@@ -12,9 +12,9 @@ const Footer = () => {
       <div className={styles["container"]}>
 
         <div className={styles["icons"]}>
-          <a href="mailto:cpunofficial101@gmail.com" className={styles["icon"]} target={"blank"} title={"cpunofficial101@gmail.com"}><GrMail /></a>
-          <a href="https://www.instagram.com/cp_unofficial.101/" className={styles["icon"]} target={"blank"} title={"Instagram"}><BsInstagram /></a>
-          <a href="https://www.youtube.com/@cpunofficial1196/videos" className={styles["icon"]} target={"blank"} title={"Youtube"}><SiYoutube /></a>
+          <a href="mailto:cpunofficial101@gmail.com" className="text-4xl mx-3" target={"blank"} title={"cpunofficial101@gmail.com"}><GrMail /></a>
+          <a href="https://www.instagram.com/cp_unofficial.101/" className={"text-4xl mx-3"} target={"blank"} title={"Instagram"}><BsInstagram /></a>
+          <a href="https://www.youtube.com/@cpunofficial1196/videos" className={"text-4xl mx-3"} target={"blank"} title={"Youtube"}><SiYoutube /></a>
         </div>
         <div className={styles["text"]}>
           <Link href='/about' title={"About Us"}>About Us</Link>&nbsp; &nbsp;
