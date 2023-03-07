@@ -54,12 +54,12 @@ function SignIn() {
   };
 
   return (
-    <>
+    <div className="h-screen">
       <button className='sign-in' onClick={signInWithGoogle}>
         Sign in 
       </button>
      
-    </>
+    </div>
   );
 }
 

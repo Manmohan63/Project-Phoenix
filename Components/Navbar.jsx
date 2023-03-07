@@ -13,17 +13,17 @@ const Navbar = () => {
   return (
     <div className={styles["Navbar"]}>
       <div className={styles["container"]}>
-        <div className={styles["img_container"]} title={"CP UnOfficial"}>
-          <Link href='/'>
+        <div title={"CP UnOfficial"}>
+          <Link href='/' className='flex'>
             <Image
               src={logo}
               alt="Phoenix"
-              className={styles["bird"]}
+              className={"h-auto w-20 justify-around item-center"}
             />
             <Image
               src={name}
               alt="logo"
-              className={styles["name"]}
+              className={"p-1 h-auto w-48"}
             />
           </Link>
         </div>

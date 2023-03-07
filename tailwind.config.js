@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     extend: {},
-    extend: {
+    colors: {
       'main': '#dbad69',
       'dark__blue': '#060031',
       'gradient__light__blue': '#080042'
