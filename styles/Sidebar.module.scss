@@ -1,4 +1,7 @@
-@import "./App.module.scss";
+$sw: 8vw;
+$nh: 4vw;
+$blue_1: #010a35;
+$blue_2: #060031;
 .sidebar{
     top: 0;
     left: 0;
@@ -14,12 +17,12 @@
     
     background-color: #060031;
     background-image: linear-gradient(-215deg, #0c0063 0%, #060031 85%);
-    color: $gold;
+    color: #dbad69;
     font-size: 1rem;
-    border-right: 1px solid $gold;
+    border-right: 1px solid #dbad69;
 
     .hello{
-        border: 2px solid $gold;
+        border: 2px solid #dbad69;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -36,7 +39,7 @@
         }
 
         &:hover{
-            box-shadow: $gold 0px 1px 4px, $gold 0px 0px 0px 3px;
+            box-shadow: #dbad69 0px 1px 4px, #dbad69 0px 0px 0px 3px;
         }
 
         .textcontainer{

@@ -1,35 +1,36 @@
 import React from 'react'
-import styles from '../styles/Navbar.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '../public/logo.png'
-import name from '../public/pic5_zoom.png'
 import { SignIn } from '@/pages/chatroom'
-import{SignOut} from '@/pages/chatroom'
+import { SignOut } from '@/pages/chatroom'
 
 
 const Navbar = () => {
-  
+
   return (
-    <div className={styles["Navbar"]}>
-      <div className={styles["container"]}>
+    <div className={"fixed top-0 right-0 w-full overflow-auto h-[4vw] overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
+      <div className={"flex justify-between items-center w-full px-4"}>
         <div title={"CP UnOfficial"}>
-          <Link href='/' className='flex'>
+          <Link href='/' className='flex items-center space-around'>
             <Image
-              src={logo}
+              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678292149/logo_sgor2b.png"}
               alt="Phoenix"
-              className={"h-auto w-20 justify-around item-center"}
+
+              height={70}
+              width={70}
             />
             <Image
-              src={name}
+              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678292149/pic5_zoom_on6noq.png"}
               alt="logo"
-              className={"p-1 h-auto w-48"}
+
+              height={50}
+              width={150}
             />
           </Link>
         </div>
-        <div className={styles["options"]}>
-          <Link href='/' className={styles["first"]}>Sign up&nbsp;</Link>
-          <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link>
+        <div className={"flex justify-between items-center p-8"}>
+          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>Sign up&nbsp;</Link>
+          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>&nbsp;Sign in</Link>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { initializeApp } from "firebase/app";
-//import styles from '../styles/chatroom.module.scss'
 import {
   getFirestore,
   collection,
