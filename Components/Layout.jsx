@@ -1,10 +1,9 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import styles from '../styles/Layout.module.scss'
 
 const Layout = ({ children }) => {
     return (
-        <div className={styles.maincontent}>
+        <div className={"bg-fixed bg-center bg-cover text-lg"} style={{ backgroundImage: "url('https://res.cloudinary.com/dk8ign4oc/image/upload/v1678252442/1_ynixuz.png')" }}>
             <Sidebar />
             {children}
         </div>
