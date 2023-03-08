@@ -8,7 +8,7 @@ import { SignOut } from '@/pages/chatroom'
 const Navbar = () => {
 
   return (
-    <div className={"fixed top-0 right-0 w-full overflow-auto h-[4vw] overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
+    <div className={"fixed top-0 right-0 w-full overflow-auto h-[4vw] z-10 overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
       <div className={"flex justify-between items-center w-full px-4"}>
         <div title={"CP UnOfficial"}>
           <Link href='/' className='flex items-center space-around'>

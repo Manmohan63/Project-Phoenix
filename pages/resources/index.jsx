@@ -1,16 +1,22 @@
-import useSWR from 'swr';
-const fetcher = (url) => fetch(url).then((res) => res.json());
+import React from 'react'
+import { useState } from 'react';
+import Tools from '../tools';
+import Browser_extensions from '../browser_extensions';
 
-export default function Index() {
-  const { data, error } = useSWR('/api/staticdata', fetcher);
-  if (error) return <div>Failed to load</div>;
-  if (!data) return <div>Loading...</div>;
+const Resource = () => {
+  const [open, setopen] = useState(true);
   return (
-    <div>
-      <h1>My Framework from file</h1>
-      <ul>
-
-      </ul>
+    <div className=''>
+      <div className='w-full flex items-center border-b-2'>
+        <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open? ("text-dark__blue bg-main"): "m-0"}`} onClick={()=>setopen(true)}>Tools</div>
+        <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${!open ? ("text-dark__blue bg-main"): "m-0"}`} onClick={()=>setopen(false)}>Broswser Extensions</div>
+      </div>
+      <div className=''>
+        {open && <Tools />}
+        {!open && <Browser_extensions />}
+      </div>
     </div>
-  );
+  )
 }
+
+export default Resource

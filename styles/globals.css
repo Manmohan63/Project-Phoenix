@@ -3,6 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities{
+    .grid-template-rows-global{
+        grid-auto-rows: max-content;
+    }
+}
+
 body{
     margin: 0;
     padding: 0;
