@@ -29,7 +29,7 @@ const firebaseApp=initializeApp({
 // }
 //console.log(process.env.MY_A);
 //const app = initializeApp(firebaseApp);
-const auth = getAuth();
+export const auth = getAuth();
 const firestore = getFirestore(firebaseApp);
 
 const Chat = () => {

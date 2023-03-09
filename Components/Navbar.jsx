@@ -3,10 +3,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { SignIn } from '@/pages/chatroom'
 import { SignOut } from '@/pages/chatroom'
+import { auth } from '@/pages/chatroom'
 
 
 const Navbar = () => {
-
+  let style = "p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid";
+  const user = auth.currentUser;
   return (
     <div className={"fixed top-0 right-0 w-full overflow-auto h-[4vw] z-10 overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
       <div className={"flex justify-between items-center w-full px-4"}>
@@ -29,8 +31,15 @@ const Navbar = () => {
           </Link>
         </div>
         <div className={"flex justify-between items-center p-8"}>
+          {/*<Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>Sign up&nbsp;</Link>
+          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>&nbsp;Sign in</Link>*/}
           <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>Sign up&nbsp;</Link>
-          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>&nbsp;Sign in</Link>
+          {/* <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link> */}
+
+          {/* <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link> */}
+          <section>{user ? <SignOut className={style} /> : <SignIn className={style} />}</section>
+          {/* <SignIn/>
+          <SignOut/> */}
         </div>
       </div>
     </div>
