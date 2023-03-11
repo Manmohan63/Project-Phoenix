@@ -5,6 +5,6 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com']
+    domains: ['res.cloudinary.com', 'lh3.googleusercontent.com', 'chrome.google.com', "oeis.org", "ieeextreme.org", "upload.wikimedia.org", "codehunt.cc", "recommender.codedrills.io", "www.andreafiori.net","c2-ladders.com",""]
   }
 };

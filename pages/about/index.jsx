@@ -2,10 +2,10 @@ import React from 'react'
 
 const index = () => {
   return (
-    <div className='flex justify-around items-around p-2.5 h-screen'>
+    <div className='flex justify-around items-around p-2.5 pb-12'>
       <div className="w-4/5">
-        <h1 className='text-5xl font-bold text-center p-4'>ABOUT US</h1>
-        <p className='text-xl'>Welcome to CP Unofficial, an open community dedicated to competitive programming enthusiasts! We are a group of students from NITR who are passionate about programming and have come together to create a community for like-minded individuals to connect and collaborate.
+        <h1 className='text-5xl font-bold text-center p-4 sm:text-3xl'>ABOUT US</h1>
+        <p className='text-xl sm:text-base text-center'>Welcome to CP Unofficial, an open community dedicated to competitive programming enthusiasts! We are a group of students from NITR who are passionate about programming and have come together to create a community for like-minded individuals to connect and collaborate.
         At CP Unofficial, we believe that programming is not just a hobby, but a way of life. Our goal is to create a community where everyone can learn from each other, grow together, and have fun while doing it. Whether you are a beginner just starting out or a seasoned pro, we welcome you to join us on this journey. <br /><br />
 
         Our community is focused on competitive programming, which is a sport that involves solving complex algorithmic problems under time pressure. Through regular contests, practice sessions, and discussions, we aim to provide a platform for our members to improve their skills and prepare for competitions.
