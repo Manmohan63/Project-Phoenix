@@ -1,87 +1,65 @@
 import React from 'react'
 import Link from 'next/link';
-import styles from '../styles/Sidebar.module.scss'
-import Image from 'next/image';
-import home from '../public/Sidebar Icons/Home.png'
-import chatroom from '../public/Sidebar Icons/Chatroom.png'
-import calender from '../public/Sidebar Icons/calender.png'
-import resources from '../public/Sidebar Icons/resources.png'
-import more from '../public/Sidebar Icons/more.png'
-import settings from '../public/Sidebar Icons/settings.png'
+import { IoIosHome } from 'react-icons/Io'
+import { BsFillChatRightFill } from 'react-icons/bs'
+import { FaCalendarAlt } from 'react-icons/fa'
+import { AiOutlineAppstoreAdd } from 'react-icons/ai'
+import { FiMoreHorizontal } from 'react-icons/fi'
+import { MdSettings } from 'react-icons/md'
+
 
 const Sidebar = () => {
+  let sideicons__styles = "flex justify-center items-center rounded-md flex-col h-[65px] w-[70px] p-[4px] hover:text-dark__blue hover:bg-main sm:p-0 sm:h-auto sm:w-[50px] sm:p-1";
+  let icon__size=35;
+  let text__style ="flex justify-center items-center sm:hidden text-xs p-[2px]";
   return (
-    <div className={styles["sidebar"]}>
+    <div className={"fixed flex flex-col justify-evenly items-center bg-gradient-to-t from-purple-900 to-purple-800 text-yellow-400 border-r border-yellow-400 top-0 left-0 bottom-0 pt-[64px] w-[80px] text-main sm:w-[60px]"}>
       <Link href="/">
-        <div className={styles["hello"]} title={"Home"}>
+        <div className={sideicons__styles} title={"Home"}>
           <div>
-            <Image
-              src={home}
-              alt="home"
-              className={styles["images"]}
-            />
+            <IoIosHome size={icon__size} />
           </div>
-          <div className={styles['textcontainer']}>Home</div>
+          <div className={text__style}>Home</div>
         </div>
       </Link>
       <Link href="/chatroom">
-        <div className={styles["hello"]} title={"Chatroom"}>
-          <div className={styles["imagecontainer"]}>
-            <Image
-              src={chatroom}
-              alt="chatroom"
-              className={styles["images"]}
-            />
+        <div className={sideicons__styles} title={"Chatroom"}>
+          <div>
+            <BsFillChatRightFill size={icon__size}/>
           </div>
-          <div className={styles['textcontainer']}>Chatroom</div>
+          <div className={text__style}>Chatroom</div>
         </div>
       </Link>
       <Link href="/calender">
-        <div className={styles["hello"]} title={"Calender"}>
-          <div className={styles["imagecontainer"]}>
-            <Image
-              src={calender}
-              alt="calender"
-              className={styles["images"]}
-            />
+        <div className={sideicons__styles} title={"Calender"}>
+          <div>
+            <FaCalendarAlt size={icon__size}/>
           </div>
-          <div className={styles['textcontainer']}>Calender</div>
+          <div className={text__style}>Calender</div>
         </div>
       </Link>
       <Link href="/resources">
-        <div className={styles["hello"]}>
-          <div className={styles["imagecontainer"]} title={"Resources"}>
-            <Image
-              src={resources}
-              alt="Resources"
-              className={styles["images"]}
-            />
+        <div className={sideicons__styles}>
+          <div title={"Resources"}>
+            <AiOutlineAppstoreAdd size={icon__size}/>
           </div>
-          <div className={styles['textcontainer']}>Resources</div>
+          <div className={text__style}>Resources</div>
         </div>
       </Link>
       <Link href="/more">
-        <div className={styles["hello"]} title={"More"}>
-          <div className={styles["imagecontainer"]}>
-            <Image
-              src={more}
-              alt="more"
-              className={styles["images"]}
-            />
+        <div className={sideicons__styles} title={"More"}>
+          <div>
+            <FiMoreHorizontal size={icon__size}/>
           </div>
-          <div className={styles['textcontainer']}>More</div>
+          <div className={text__style}>More</div>
         </div>
       </Link>
       <Link href="/settings">
-        <div className={styles["hello"]} title={"Settings"}>
-          <div className={styles["imagecontainer"]}>
-            <Image
-              src={settings}
-              alt="settings"
-              className={styles["images"]}
-            />
+        <div className={sideicons__styles} title={"Settings"}>
+          <div>
+            <MdSettings size={icon__size}/>
           </div>
-          <div className={styles['textcontainer']}>settings</div>
+          <div className={text__style}>settings</div>
         </div>
       </Link>
     </div>
