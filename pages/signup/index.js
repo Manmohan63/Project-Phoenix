@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-// import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+
 
 const firebaseConfig = {
   
