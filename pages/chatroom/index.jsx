@@ -53,7 +53,7 @@ function SignIn() {
   };
 
   return (
-    <div className="h-screen">
+    <div className="">
       <button className='sign-in' onClick={signInWithGoogle}>
         Sign in 
       </button>

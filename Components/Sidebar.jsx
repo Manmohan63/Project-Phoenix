@@ -1,92 +1,65 @@
 import React from 'react'
 import Link from 'next/link';
-import Image from 'next/image';
+import { IoIosHome } from 'react-icons/Io'
+import { BsFillChatRightFill } from 'react-icons/bs'
+import { FaCalendarAlt } from 'react-icons/fa'
+import { AiOutlineAppstoreAdd } from 'react-icons/ai'
+import { FiMoreHorizontal } from 'react-icons/fi'
+import { MdSettings } from 'react-icons/md'
+
 
 const Sidebar = () => {
+  let sideicons__styles = "flex justify-center items-center rounded-md flex-col h-[65px] w-[70px] p-[4px] hover:text-dark__blue hover:bg-main sm:p-0 sm:h-auto sm:w-[50px] sm:p-1";
+  let icon__size=35;
+  let text__style ="flex justify-center items-center sm:hidden text-xs p-[2px]";
   return (
-    <div className={"fixed flex flex-col justify-evenly items-center bg-gradient-to-t from-purple-900 to-purple-800 text-yellow-400 border-r border-yellow-400 top-0 left-0 bottom-0 pt-[4vw] w-[8vw] text-main"}>
+    <div className={"fixed flex flex-col justify-evenly items-center bg-gradient-to-t from-purple-900 to-purple-800 text-yellow-400 border-r border-yellow-400 top-0 left-0 bottom-0 pt-[64px] w-[80px] text-main sm:w-[60px]"}>
       <Link href="/">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "} title={"Home"}>
+        <div className={sideicons__styles} title={"Home"}>
           <div>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388162/Home_h0wfwc.png"}
-              alt="home"
-              className={"w-[3.5vw] h-auto"}
-               height={128}
-              width={128}
-            />
+            <IoIosHome size={icon__size} />
           </div>
-          <div className={"flex justify-center items-center"}>Home</div>
+          <div className={text__style}>Home</div>
         </div>
       </Link>
       <Link href="/chatroom">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "} title={"Chatroom"}>
+        <div className={sideicons__styles} title={"Chatroom"}>
           <div>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388161/Chatroom_cfiypu.png"}
-              alt="chatroom"
-              className={"w-[3.5vw] h-auto"}
-               height={128}
-              width={128}
-            />
+            <BsFillChatRightFill size={icon__size}/>
           </div>
-          <div className={"flex justify-center items-center"}>Chatroom</div>
+          <div className={text__style}>Chatroom</div>
         </div>
       </Link>
       <Link href="/calender">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "} title={"Calender"}>
+        <div className={sideicons__styles} title={"Calender"}>
           <div>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388162/calender_muwd3r.png"}
-              alt="calender"
-              className={"w-[3.5vw] h-auto"}
-               height={128}
-              width={128}
-            />
+            <FaCalendarAlt size={icon__size}/>
           </div>
-          <div className={"flex justify-center items-center"}>Calender</div>
+          <div className={text__style}>Calender</div>
         </div>
       </Link>
       <Link href="/resources">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "}>
+        <div className={sideicons__styles}>
           <div title={"Resources"}>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388162/resources_noksuu.png"}
-              alt="Resources"
-              className={"w-[3.5vw] h-auto"}
-               height={128}
-              width={128}
-            />
+            <AiOutlineAppstoreAdd size={icon__size}/>
           </div>
-          <div className={"flex justify-center items-center"}>Resources</div>
+          <div className={text__style}>Resources</div>
         </div>
       </Link>
       <Link href="/more">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "} title={"More"}>
+        <div className={sideicons__styles} title={"More"}>
           <div>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388162/more_pmz8zy.png"}
-              alt="more"
-              className={"w-[3.5vw] h-auto "}
-               height={128}
-              width={128}
-            />
+            <FiMoreHorizontal size={icon__size}/>
           </div>
-          <div className={"flex justify-center items-center"}>More</div>
+          <div className={text__style}>More</div>
         </div>
       </Link>
       <Link href="/settings">
-        <div className={"border-2 border-solid border-main flex justify-center items-center h-[5vw] w-[5vw] rounded-md flex-col p-[5px] transition-all duration-500 ease-in-out hover:box-shadow "} title={"Settings"}>
+        <div className={sideicons__styles} title={"Settings"}>
           <div>
-            <Image
-              src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678388162/settings_gr7zcq.png"}
-              alt="settings"
-              className={"w-[3.5vw] h-auto"}
-               height={128}
-              width={128}
-            />
+            <MdSettings size={icon__size}/>
           </div>
-          <div className={"flex justify-center items-center"}>settings</div>
+          <div className={text__style}>settings</div>
         </div>
       </Link>
     </div>

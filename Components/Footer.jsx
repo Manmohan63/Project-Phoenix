@@ -7,9 +7,9 @@ import Link from 'next/link';
 const Footer = () => {
 
   return (
-    <div className={"flex justify-center items-center relative bottom-0 right-0 border-t-2 border-x-2 border-main bg-cover bg-center backdrop-blur-sm bg-fixed"}>
+    <div className={"flex justify-center items-center relative left-0 bottom-0 right-0 border-t-2 border-x-2 border-main backdrop-blur-sm w-full"}>
       <div className={"flex flex-col justify-center items-center"}>
-        <div className={"flex justify-around items-center py-[0.4rem] px-[10rem] text-main w-[45%] text-2xl"}>
+        <div className={"flex justify-around items-center py-[0.4rem] px-[10rem] text-main w-[45%]"}>
           <a href="mailto:cpunofficial101@gmail.com" className={"text-4xl mx-3 hover:scale-110  transition-all duration-300 "} target={"blank"} title={"cpunofficial101@gmail.com"}><GrMail /></a>
           <a href="https://www.instagram.com/cp_unofficial.101/" className={"text-4xl mx-3 hover:scale-110  transition-all duration-300 "} target={"blank"} title={"Instagram"}><BsInstagram /></a>
           <a href="https://www.youtube.com/@cpunofficial1196/videos" className={"text-4xl mx-3 hover:scale-110  transition-all duration-300 "} target={"blank"} title={"Youtube"}><SiYoutube /></a>

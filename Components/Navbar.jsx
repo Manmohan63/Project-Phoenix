@@ -1,5 +1,6 @@
 import React from 'react'
 import { initializeApp } from "firebase/app";
+import { Divide as Hamburger } from 'hamburger-react'
 import {
   getFirestore,
   collection,
@@ -14,11 +15,10 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Link from 'next/link'
 import Image from 'next/image'
-// import { SignIn } from '@/pages/chatroom'
-// import { SignOut } from '@/pages/chatroom' 
-// import { auth } from '@/pages/chatroom'
+import { useState } from 'react';
 
-const firebaseApp=initializeApp({
+
+const firebaseApp = initializeApp({
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -28,13 +28,14 @@ const firebaseApp=initializeApp({
 });
 const auth = getAuth();
 const firestore = getFirestore(firebaseApp);
+const style__button = "border-2 border-main m-2 p-1.5 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5";
 
 const Navbar = () => {
-  let style = "p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid";
-  // const user = auth.currentUser;
   const [user] = useAuthState(auth);
+  const [isOpen, setOpen] = useState(false);
+  // { console.log(isOpen) }
   return (
-    <div className={"fixed top-0 right-0 w-full overflow-auto h-[4vw] z-10 overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
+    <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-10 overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
       <div className={"flex justify-between items-center w-full px-4"}>
         <div title={"CP UnOfficial"}>
           <Link href='/' className='flex items-center space-around'>
@@ -54,16 +55,23 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        <div className={"flex justify-between items-center p-8"}>
-          {/*<Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>Sign up&nbsp;</Link>
-          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>&nbsp;Sign in</Link>*/}
-          <Link href='/' className={"p-8 rounded-md bg-blue-600 hover:border-gold hover:bg-[gold] hover:text-[blue-1] cursor-pointer border-1 border-solid"}>Sign up&nbsp;</Link>
-          {/* <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link> */}
+        <div className={'hidden sm:block'}>
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+          />
+        </div>
+        {isOpen && <div className="fixed top-[64px] right-0 h-auto w-[40vw] z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
+          <div className={`flex flex-col justify-between items-center`}>
+            <Link href='/' className={style__button}>Sign up&nbsp;</Link>
+            {user ? <SignOut /> : <SignIn />}
+          </div>
+        </div>
 
-          {/* <Link href='/' className={styles["second"]}>&nbsp;Sign in</Link> */}
-          <section>{user ? <SignOut className={style} /> : <SignIn className={style} />}</section>
-          {/* <SignIn/>
-          <SignOut/> */}
+        }
+        <div className={`flex justify-between items-center sm:hidden`}>
+          <Link href='/' className={style__button}>Sign up&nbsp;</Link>
+          <section>{user ? <SignOut /> : <SignIn />}</section>
         </div>
       </div>
     </div>
@@ -77,12 +85,9 @@ function SignIn() {
   };
 
   return (
-    // <div className="h-screen">
-      <button className='sign-in' onClick={signInWithGoogle}>
-        Sign in 
-      </button>
-     
-    // </div>
+    <button className={style__button} onClick={signInWithGoogle}>
+      Sign in
+    </button>
   );
 }
 
@@ -90,14 +95,11 @@ function SignIn() {
 function SignOut() {
   return (
     auth.currentUser && (
-      <button className="sign-out" onClick={() => auth.signOut()}>
+      <button className={style__button} onClick={() => auth.signOut()}>
         Sign Out
       </button>
     )
   );
 }
-
-
-
 
 export default Navbar

@@ -11,12 +11,18 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    screens: {
+      'sm': { 'min': '1px', 'max': '767px' },
+      'md': { 'min': '768px', 'max': '991px' },
+      'lg': { 'min': '992px', 'max': '1199px' },
+      'xl': { 'min': '1200px' },
+    },
     colors: {
       'main': '#dbad69',
       'dark__blue': '#060031',
-      'gradient__light__blue': '#080042'
+      'gradient__light__blue': '#080042',
+      'bg_blue_phoenix': '#0b005d'
     },
-
   },
   plugins: [],
 }
