@@ -25,7 +25,7 @@ const index = () => {
       desc: `CodeForces Tracker is a web application to help CodeForces users to solve problems and manage progress more efficiently.`,
     },
     {
-      name: 'The On- Line Encyclopedia of Integer Sequences® (OEIS®)',
+      name: 'The On-Line Encyclopedia of Integer Sequences® (OEIS®)',
       link: 'https://oeis.org/',
       image_address: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/OEIS_icon.png',
       desc: `Most people use the OEIS to get information about a particular number sequence. If you are a new visitor, then you might ask the database if it can recognize your favorite sequence, if you have one.`
@@ -62,7 +62,7 @@ const index = () => {
     },
   ];
   return (
-    <div className='w-full grid grid-cols-2 grid-template-rows-global'>
+    <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1'>
       {data.map((d, index) => (
         <div key={index}>
           <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm h-[15vw] 

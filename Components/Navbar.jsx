@@ -16,6 +16,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react';
+import { RiMoonFill } from 'react-icons/ri'
+import { BsFillSunFill } from 'react-icons/bs'
 
 
 const firebaseApp = initializeApp({
@@ -28,14 +30,14 @@ const firebaseApp = initializeApp({
 });
 const auth = getAuth();
 const firestore = getFirestore(firebaseApp);
-const style__button = "border-2 border-main m-2 p-1.5 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5";
+const style__button = "border-2 m-2 p-1.5 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
 
-const Navbar = () => {
+const Navbar = ({theme, choosetheme}) => {
   const [user] = useAuthState(auth);
   const [isOpen, setOpen] = useState(false);
-  // { console.log(isOpen) }
+  // console.log(theme);
   return (
-    <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-10 overflow-y-hidden text-[#dbad69] text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center bg-gradient-to-r from-[#231869] to-[#0b005d]"}>
+    <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-10 overflow-y-hidden text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center " + `${theme ? "bg-bg_blue_phoenix text-main " : "text-light_theme_bg bg-light_theme_ot border-bg-light_theme_ot"}`}>
       <div className={"flex justify-between items-center w-full px-4"}>
         <div title={"CP UnOfficial"}>
           <Link href='/' className='flex items-center space-around'>
@@ -63,39 +65,44 @@ const Navbar = () => {
         </div>
         {isOpen && <div className="fixed top-[64px] right-0 h-auto w-[40vw] z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
           <div className={`flex flex-col justify-between items-center`}>
-            <Link href='/' className={style__button}>Sign up&nbsp;</Link>
-            {user ? <SignOut /> : <SignIn />}
+            <Link href='/' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
+            {user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}
+            <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
         </div>
 
         }
         <div className={`flex justify-between items-center sm:hidden`}>
-          <Link href='/' className={style__button}>Sign up&nbsp;</Link>
-          <section>{user ? <SignOut /> : <SignIn />}</section>
+          <button 
+            className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
+          onClick={()=> choosetheme(!theme)}> 
+          {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
+          <Link href='/' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
+          <section>{user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}</section>
         </div>
       </div>
     </div>
   )
 }
 
-function SignIn() {
+function SignIn({theme}) {
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider);
   };
 
   return (
-    <button className={style__button} onClick={signInWithGoogle}>
+    <button className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} onClick={signInWithGoogle}>
       Sign in
     </button>
   );
 }
 
 
-function SignOut() {
+function SignOut({theme}) {
   return (
     auth.currentUser && (
-      <button className={style__button} onClick={() => auth.signOut()}>
+      <button className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} onClick={() => auth.signOut()}>
         Sign Out
       </button>
     )

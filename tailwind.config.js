@@ -20,8 +20,11 @@ module.exports = {
     colors: {
       'main': '#dbad69',
       'dark__blue': '#060031',
+      'light__blue': '#7b9e57',
       'gradient__light__blue': '#080042',
-      'bg_blue_phoenix': '#0b005d'
+      'bg_blue_phoenix': '#0b005d',
+      'light_theme_bg': '#FFF1DC',
+      'light_theme_ot': '#3A98B9',
     },
   },
   plugins: [],
