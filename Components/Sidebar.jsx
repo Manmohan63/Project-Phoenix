@@ -13,7 +13,8 @@ const Sidebar = () => {
   let icon__size=35;
   let text__style ="flex justify-center items-center sm:hidden text-xs p-[2px]";
   return (
-    <div className={`fixed flex flex-col justify-evenly items-center border-r top-0 left-0 bottom-0 pt-[64px] w-[80px] sm:w-[60px]" border-main`}>
+    <div className={`fixed flex flex-col justify-evenly items-center border-r top-0 left-0 bottom-0 pt-[64px] w-[80px] 
+    sm:w-[60px] border-main`}>
       <Link href="/">
         <div className={sideicons__styles} title={"Home"}>
           <div>

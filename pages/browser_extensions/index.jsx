@@ -93,29 +93,30 @@ Chrome extension that makes Codeforces better: supports multiple ratings graph.`
     },
   ];
   return (
-    <div className='w-full grid grid-cols-2 grid-template-rows-global'>
+    <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'>
       {data.map((d, index) => (
         <div key={index}>
-          <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm h-[15vw] 
-          hover:box-shadow  flex flex-col items-center justify-around" title={d.name}>
-            <h1 className='font-bold text-2xl mb-2'>{d.name}</h1>
+          <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
+          hover:box-shadow  flex flex-col items-center justify-around lg:h-[25vw] xl:h-[25vw]" title={d.name}>
+            <h1 className='font-bold text-2xl mb-2 md:text-xl sm:text-md'>{d.name}</h1>
             <div className='flex items-start justify-around'>
-              <p className='text-base'>{d.desc}</p>
+              <p className='text-lg lg:text-base sm:text-sm'>{d.desc}</p>
               <Image
                 src={d.image_address}
                 alt={d.name}
-                height={128}
-                width={128}
-                className='border-4 border-solid border-main rounded-md'
+                height={80}
+                width={80}
+                className='border-4 border-solid border-main rounded-md flex justify-center items-center h-[80px] w-[80px] m-2 
+                sm:h-[60px] sm:w-[60px] sm:m-1'
               />
             </div>
-            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Web Store 
-              <BsBoxArrowUpRight className='mx-2'/>&nbsp;</a></h2>
+            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Web Store
+              <BsBoxArrowUpRight className='mx-2' />&nbsp;</a></h2>
           </div>
         </div>
       ))}
-      <Link href='/contact' className="hover:box-shadow m-2 border-2 p-4 rounded-md backdrop-blur-sm flex flex-col justify-around items-center h-[15vw]" title={"Add More"}>
-        <TiPlus className='h-auto w-28 border-2 border-main rounded-xl' />
+      <Link href='/contact' className="hover:box-shadow m-2 border-2 p-4 rounded-md backdrop-blur-sm flex flex-col justify-around items-center lg:h-[25vw] xl:h-[25vw]" title={"Add More"}>
+        <TiPlus className='h-auto w-28 md:w-20 sm:w-16 border-2 border-main rounded-xl' />
         <p classname=''> Add More</p>
       </Link>
     </div>
