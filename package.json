@@ -25,6 +25,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.43.2",
     "react-icons": "^4.8.0",
+    "react-responsive-carousel": "^3.2.23",
     "sass": "^1.57.1",
     "swr": "^2.0.3"
   },
