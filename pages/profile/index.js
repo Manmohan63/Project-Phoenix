@@ -29,16 +29,20 @@ const Profile = () => {
       </div>
     );
   }
-  
+ 
   return (
     <div>
       <h1>Profile</h1>
       <p>Name: {user.name}</p>
       <p>Email: {user.email}</p>
-      <p>Date of Birth: {user.dateOfBirth}</p>
+      <p>Date of Birth: {user.dob}</p>
       <p>City: {user.city}</p>
       <p>Codeforces ID: {user.codeforcesId}</p>
-     
+      <p>Leetcode ID: {user.leetcodeId}</p>
+      <p>Gender: {user.gender}</p>
+      <p>State: {user.state}</p>
+      <p>College Name: {user.collegename}</p>
+      <p>Interested In: {user.interestedin}</p>
     </div>
   );
 };
