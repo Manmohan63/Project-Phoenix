@@ -3,7 +3,7 @@ import Carousel from '../Components/Carousel/carousel'
 import Monthly from '../Components/Monthly Scoreboard/monthly';
 import Weekly from '../Components/Weekly Scoreboard/weekly';
 import Homeredirect from '../Components/HomeRedirect/homeredirect';
-import Faq from '../Components/FAQ/Faq';
+import Faq from '../Components/FAQ/FAQ';
 import Link from 'next/link';
 import Head from 'next/head'
 
