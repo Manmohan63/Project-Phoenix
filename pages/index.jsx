@@ -1,41 +1,32 @@
-import { Carousel } from "react-responsive-carousel";
-import Image from "next/image";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { useState} from 'react'
+import Carousel from '../Components/Carousel/carousel'
+import Monthly from '../Components/Monthly Scoreboard/monthly';
+import Weekly from '../Components/Weekly Scoreboard/Weekly';
+import Homeredirect from '../Components/HomeRedirect/homeredirect';
+import Faq from '../Components/FAQ/Faq';
+import Link from 'next/link';
 
-const images = [
-  {
-    src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1678289997/4_foug3j.png",
-    alt: "image 1",
-  },
-  {
-    src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1678289997/4_foug3j.png",
-    alt: "image 2",
-  },
-  {
-    src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1678289997/4_foug3j.png",
-    alt: "image 3",
-  },
-];
-
-export default function ImageCarousel() {
+const Index = () => {
   return (
-    <div className="w-full">
-      <Carousel infiniteLoop autoPlay stopOnHover={false} >
-        {images.map((image) => (
-          <div
-            key={image.alt}
-            className="flex items-center justify-center h-64"
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover"
-              height={50}
-              width={50}
-            />
-          </div>
-        ))}
-      </Carousel>
+    <div className='flex items-center flex-col'>
+      <div className="flex flex-col items-center justify-start w-full">
+        <Carousel />
+      </div>
+      <div className='flex justify-around items-around p-2.5 pb-12'>
+        <div className="w-4/5">
+          <h1 className='text-6xl font-bold text-center p-4 sm:text-3xl'>ABOUT US</h1>
+          <p className='text-2xl sm:text-sm text-center'>Welcome to CP Unofficial, an open community dedicated to competitive programming enthusiasts! We are a group of students from NITR who are passionate about programming and have come together to create a community for like-minded individuals to connect and collaborate.
+            At CP Unofficial, we believe that programming is not just a hobby, but a way of life. Our goal is to create a community where everyone can learn from each other, grow together, and have fun while doing it. Whether you are a beginner just starting out or a seasoned pro, we welcome you to join us on this journey. <Link href='/about' className='underline'>Read more</Link></p>
+        </div>
+      </div>
+      <Homeredirect />
+      <div className='flex w-full justify-around'>
+      <Monthly />
+      <Weekly />
+      </div>
+      <Faq/>
     </div>
-  );
+  )
 }
+
+export default Index

@@ -31,7 +31,7 @@ const Sidebar = () => {
           <div className={text__style}>Chatroom</div>
         </div>
       </Link>
-      <Link href="/calender">
+      <Link href="/calendar">
         <div className={sideicons__styles} title={"Calender"}>
           <div>
             <FaCalendarAlt size={icon__size}/>

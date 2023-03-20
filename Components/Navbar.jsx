@@ -18,6 +18,8 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { RiMoonFill } from 'react-icons/ri'
 import { BsFillSunFill } from 'react-icons/bs'
+import { ImSearch } from 'react-icons/im'
+import { useRouter } from 'next/navigation';
 
 
 const firebaseApp = initializeApp({
@@ -37,7 +39,7 @@ const Navbar = ({theme, choosetheme}) => {
   const [isOpen, setOpen] = useState(false);
   // console.log(theme);
   return (
-    <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-10 overflow-y-hidden text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center " + `${theme ? "bg-bg_blue_phoenix text-main " : "text-light_theme_bg bg-light_theme_ot border-bg-light_theme_ot"}`}>
+    <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-[100] overflow-y-hidden text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center " + `${theme ? "bg-bg_blue_phoenix text-main " : "text-light_theme_bg bg-light_theme_ot border-bg-light_theme_ot"}`}>
       <div className={"flex justify-between items-center w-full px-4"}>
         <div title={"CP UnOfficial"}>
           <Link href='/' className='flex items-center space-around'>
@@ -65,7 +67,7 @@ const Navbar = ({theme, choosetheme}) => {
         </div>
         {isOpen && <div className="fixed top-[64px] right-0 h-auto w-[40vw] z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
           <div className={`flex flex-col justify-between items-center`}>
-            <Link href='/' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
+            <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
             {user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}
             <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
@@ -73,16 +75,42 @@ const Navbar = ({theme, choosetheme}) => {
 
         }
         <div className={`flex justify-between items-center sm:hidden`}>
+          <Search/>
           <button 
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
-          <Link href='/' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
+          <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
           <section>{user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}</section>
         </div>
       </div>
     </div>
   )
+}
+const Search = () => {
+  const [name, setname] = useState('');
+  const router = useRouter();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/${name}`);
+    setname('');
+  };
+  const handleChange = (e) => {
+    setname(e.target.value);
+  };
+  return (
+    <form onSubmit={handleSubmit} className='border-2 border-main rounded-md text-dark__blue m-4 flex items-center justify-center'>
+      <label className='my-1.5 mx-1 w-[15vw]'>
+        <input type="text" className='p-1 w-full rounded-md h-[30px]' placeholder={`Search profiles`}
+          value={name} onChange={handleChange}
+        />
+      </label>
+      <button type='submit' className='p-1 hover:text-dark__blue hover:bg-main mr-1 rounded-md text-main border-2 border-main '>
+        <ImSearch size={15} />
+      </button>
+    </form>
+  );
+
 }
 
 function SignIn({theme}) {
