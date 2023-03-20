@@ -51,7 +51,7 @@ const data=[
         questionssolved:'200'
     },
 ];
-const monthly = () => {
+const Monthly = () => {
     return (
         <table className="table-fixed border-separate border-main border-2 rounded-md">
             <thead>
@@ -74,4 +74,4 @@ const monthly = () => {
     )
 }
 
-export default monthly
+export default Monthly

@@ -1,8 +1,8 @@
 import React, { useState} from 'react'
-import Carousel from '../Components/Carousel/carousel'
-import Monthly from '../Components/Monthly Scoreboard/monthly';
-import Weekly from '../Components/Weekly Scoreboard/weekly';
-import Homeredirect from '../Components/HomeRedirect/homeredirect';
+import Carousel from '../Components/Carousel/Carousel'
+import Monthly from '../Components/Monthly Scoreboard/Monthly';
+import Weekly from '../Components/Weekly Scoreboard/Weekly';
+import Homeredirect from '../Components/HomeRedirect/Homeredirect';
 import Faq from '../Components/FAQ/FAQ';
 import Link from 'next/link';
 import Head from 'next/head'
