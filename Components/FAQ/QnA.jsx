@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/Io";
 
 
 const QnA = ({question, answer, index}) => {

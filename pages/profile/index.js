@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Link from 'next/link';
-import firebaseClient  from '../../firebaseclient';
+import { app, db, auth }  from '../../firebaseclient';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const auth = getAuth(firebaseClient);
+    const auth = getAuth(app);
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const db = getFirestore(firebaseClient);
+        const db = getFirestore(app);
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         setUser(userDoc.data());
       }

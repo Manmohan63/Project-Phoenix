@@ -53,7 +53,7 @@ const data=[
 ];
 const monthly = () => {
     return (
-        <table class="table-fixed border-separate border-main border-2 rounded-md">
+        <table className="table-fixed border-separate border-main border-2 rounded-md">
             <thead>
                 <tr>
                     <th className='border-main border-2'>Name</th>

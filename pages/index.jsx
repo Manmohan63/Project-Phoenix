@@ -5,9 +5,14 @@ import Weekly from '../Components/Weekly Scoreboard/Weekly';
 import Homeredirect from '../Components/HomeRedirect/homeredirect';
 import Faq from '../Components/FAQ/Faq';
 import Link from 'next/link';
+import Head from 'next/head'
 
 const Index = () => {
   return (
+    <>
+      <Head>
+        <title>Home | CP Unofficial</title>
+      </Head>
     <div className='flex items-center flex-col'>
       <div className="flex flex-col items-center justify-start w-full">
         <Carousel />
@@ -26,6 +31,7 @@ const Index = () => {
       </div>
       <Faq/>
     </div>
+    </>
   )
 }
 
