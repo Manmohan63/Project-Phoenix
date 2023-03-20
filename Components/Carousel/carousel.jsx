@@ -1,4 +1,3 @@
-import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Marquee from "react-fast-marquee";

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
-import { IoIosHome } from 'react-icons/Io'
+import { IoIosHome } from 'react-icons/io'
 import { BsFillChatRightFill } from 'react-icons/bs'
 import { FaCalendarAlt } from 'react-icons/fa'
 import { AiOutlineAppstoreAdd } from 'react-icons/ai'
