@@ -14,23 +14,23 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 //import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 //import { useCollectionData } from 'react-firebase-hooks/firestore';
-
-const firebaseApp=initializeApp({
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-});
+import { app, db, auth }  from '../../firebaseclient';
+// const firebaseApp=initializeApp({
+//   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+//   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+//   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+//   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+//   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+//   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
+// });
 //const app1 = initializeApp(firebaseConfig);
 // if (!firebase.apps.length) {
 //   firebase.initializeApp(app);
 // }
 //console.log(process.env.MY_A);
 //const app = initializeApp(firebaseApp);
-export const auth = getAuth();
-const firestore = getFirestore(firebaseApp);
+//export const auth = getAuth();
+//const firestore = getFirestore(firebaseApp);
 
 const Chat = () => {
   const [user] = useAuthState(auth);
@@ -75,7 +75,7 @@ function SignOut() {
 
 function ChatRoom() {
   const dummy = useRef();
-  const messagesRef = collection(firestore, "messages");
+  const messagesRef = collection(db, "messages");
   const q = query(messagesRef, orderBy("createdAt"), limit(25));
 
   
@@ -92,7 +92,7 @@ function ChatRoom() {
 
     const { uid } = auth.currentUser;
 
-    await addDoc(collection(firestore, "messages"), {
+    await addDoc(collection(db, "messages"), {
       text: formValue,
       createdAt: serverTimestamp(),
       uid,

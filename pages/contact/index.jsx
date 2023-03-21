@@ -2,19 +2,19 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { BsArrowRightCircle } from "react-icons/bs"; 
+import { app, db, auth }  from '../../firebaseclient';
+// const firebaseConfig = {
+//   // Add your Firebase config here
+//   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+//   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+//   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+//   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
+//   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
+//   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
+// };
 
-const firebaseConfig = {
-  // Add your Firebase config here
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 
 // Step 2: Create a Next.js page
 import { useForm } from 'react-hook-form';
