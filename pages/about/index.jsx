@@ -1,7 +1,12 @@
 import React from 'react'
+import Head from 'next/head'
 
 const Index = () => {
   return (
+    <>
+      <Head>
+        <title>About | CP Unofficial</title>
+      </Head>
     <div className='flex justify-around items-around p-2.5 pb-12'>
       <div className="w-4/5">
         <h1 className='text-5xl font-bold text-center p-4 sm:text-3xl'>ABOUT US</h1>
@@ -16,6 +21,7 @@ const Index = () => {
         We are excited about the future of CP Unofficial, and we invite you to be a part of our community. Join us today and take the first step towards becoming a better programmer!</p> 
       </div>
     </div>
+    </>
   )
 }
 
