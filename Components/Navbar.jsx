@@ -11,7 +11,7 @@ import {
   getDocs,
   serverTimestamp,
 } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup,signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Link from 'next/link'
 import Image from 'next/image'
@@ -20,24 +20,14 @@ import { RiMoonFill } from 'react-icons/ri'
 import { BsFillSunFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
 import { useRouter } from 'next/navigation';
+import { auth } from '@/firebaseclient';
 
-
-const firebaseApp = initializeApp({
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-});
-const auth = getAuth();
-const firestore = getFirestore(firebaseApp);
 const style__button = "border-2 m-2 p-1.5 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
 
 const Navbar = ({theme, choosetheme}) => {
   const [user] = useAuthState(auth);
   const [isOpen, setOpen] = useState(false);
-  // console.log(theme);
+  
   return (
     <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-[100] overflow-y-hidden text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center " + `${theme ? "bg-bg_blue_phoenix text-main " : "text-light_theme_bg bg-light_theme_ot border-bg-light_theme_ot"}`}>
       <div className={"flex justify-between items-center w-full px-4"}>
@@ -67,8 +57,7 @@ const Navbar = ({theme, choosetheme}) => {
         </div>
         {isOpen && <div className="fixed top-[64px] right-0 h-auto w-[40vw] z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
           <div className={`flex flex-col justify-between items-center`}>
-            <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
-            {user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}
+            {user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up/Sign In&nbsp;</Link> }
             <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
         </div>
@@ -80,12 +69,13 @@ const Navbar = ({theme, choosetheme}) => {
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
-          <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
-          <section>{user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}</section>
+          
+          <section>{user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up/Sign in&nbsp;</Link>}</section>
         </div>
       </div>
     </div>
   )
+
 }
 const Search = () => {
   const [name, setname] = useState('');
@@ -113,10 +103,17 @@ const Search = () => {
 
 }
 
-function SignIn({theme}) {
-  const signInWithGoogle = () => {
+export function SignInGoogle({theme}) {
+  const router=useRouter();
+  const signInWithGoogle = async() => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    try{
+    await signInWithPopup(auth, provider);
+    router.push('/');
+    }
+    catch(error){
+     console.log(error);  
+    }
   };
 
   return (
@@ -126,6 +123,42 @@ function SignIn({theme}) {
   );
 }
 
+export function SignIn({theme}) {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState('')
+
+  const router = useRouter();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("logged In");
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError('email or password not correct')
+        // ..
+      });
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+      </label>
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+      </label>
+      <button type="submit">Sign In</button>
+    </form>
+  );
+}
 
 function SignOut({theme}) {
   return (

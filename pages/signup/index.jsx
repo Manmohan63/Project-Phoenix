@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-
+import { SignIn, SignInGoogle } from '@/Components/Navbar';
 
 const firebaseConfig = {
 
@@ -120,12 +120,18 @@ const SignupForm = () => {
             <input className={style} type="text" value={interestedin} onChange={(e) => setInterestedin(e.target.value)} />
           </label>
           <button type="submit">Sign up</button>
+          
           {/*By clicking "Sign Up," you agree to our Terms of Service and Privacy Policy.
 
 Once you've completed the form, click "Sign Up" to create your account. You'll receive a confirmation email with instructions on how to verify your account and get started.
 
 Thank you for joining our community! */}
         </form>
+        <p>Already a User</p>
+        <p> Sign In</p>
+          <SignIn/>
+          <p>Sign In with Google</p>
+          <SignInGoogle/>
       </div>
     </div>
   );
