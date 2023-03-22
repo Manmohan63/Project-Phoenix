@@ -1,8 +1,14 @@
 import React from 'react'
+import Head from 'next/head'
 
 const index = () => {
   return (
-    <div>index</div>
+    <>
+      <Head>
+        <title>Settings | CP Unofficial</title>
+      </Head>
+      <div>hello</div>
+    </>
   )
 }
 

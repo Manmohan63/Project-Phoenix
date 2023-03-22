@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Head from 'next/head'
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -14,7 +15,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 //import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 //import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { app, db, auth }  from '../../firebaseclient';
+import { app, db, auth } from '../../firebaseclient';
 // const firebaseApp=initializeApp({
 //   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 //   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -35,17 +36,22 @@ import { app, db, auth }  from '../../firebaseclient';
 const Chat = () => {
   const [user] = useAuthState(auth);
   return (
-    <div className="App">
-      <header>
-        <h1>Chatroom</h1>
-        {/* <SignOut /> */}
-      </header>
+    <>
+      <Head>
+        <title>Chatroom | CP Unofficial</title>
+      </Head>
+      <div className="App">
+        <header>
+          <h1>Chatroom</h1>
+          {/* <SignOut /> */}
+        </header>
 
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
-      {/* <ChatRoom/> */}
-    </div>
+        <section>{user ? <ChatRoom /> : <SignIn />}</section>
+        {/* <ChatRoom/> */}
+      </div>
+    </>
   );
-  }
+}
 function SignIn() {
   const signInWithGoogle = () => {
     const provider = new GoogleAuthProvider();
@@ -55,9 +61,9 @@ function SignIn() {
   return (
     <div className="">
       <button className='sign-in' onClick={signInWithGoogle}>
-        Sign in 
+        Sign in
       </button>
-     
+
     </div>
   );
 }
@@ -78,11 +84,11 @@ function ChatRoom() {
   const messagesRef = collection(db, "messages");
   const q = query(messagesRef, orderBy("createdAt"), limit(25));
 
-  
+
   const [messages, setMessages] = useState([]);
   const [formValue, setFormValue] = useState("");
 
- 
+
   getDocs(q).then((response) => {
     setMessages(response.docs.map((doc) => doc.data()));
   });
@@ -134,7 +140,7 @@ function ChatMessage(props) {
   return (
     <>
       <div className={`message ${messageClass}`}>
-      
+
         <p>{text}</p>
       </div>
     </>
@@ -142,7 +148,7 @@ function ChatMessage(props) {
 }
 
 
-export {SignIn,SignOut};
+export { SignIn, SignOut };
 export default Chat
 
 

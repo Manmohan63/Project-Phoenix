@@ -1,19 +1,34 @@
-import React from 'react'
-import Marquee from "react-fast-marquee";
-import Marquee_content from './Marquee_content';
+import React, { useState } from 'react'
+import Head from 'next/head'
+import Tools from '../../Components/tools/index';
+import Browser_extensions from '../../Components/browser_extensions/index';
+import YTvideos from '../../Components/YT videos/index';
 
-const index = () => {
+const Index = () => {
+  const [open1, setopen1] = useState(true);
+  const [open2, setopen2] = useState(false);
+  const [open3, setopen3] = useState(false);
   return (
-    <Marquee
-      pauseOnHover={true}
-      pauseOnClick={true}
-      loop={0}
-      speed={15} 
-      gradient={false}
-    >
-      <Marquee_content />
-    </Marquee>
+    <>
+      <Head>
+        <title>Resources | CP Unofficial</title>
+      </Head>
+      <div className=''>
+        <div className='w-full flex items-center border-b-2'>
+          <div className={`cursor-pointer border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open1 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => {
+            setopen1(true); setopen2(false); setopen3(false);
+          }}>Blogs</div>
+          <div className={`cursor-pointer border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open2 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => { setopen1(false); setopen2(true); setopen3(false); }}>Videos</div>
+          <div className={`cursor-pointer border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open3 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => { setopen1(false); setopen2(false); setopen3(true); }}>Practice</div>
+        </div>
+        <div className=''>
+          {open1 && <Tools />}
+          {open2 && <YTvideos />}
+          {open3 && <Browser_extensions />}
+        </div>
+      </div>
+    </>
   )
 }
 
-export default index
+export default Index
