@@ -93,7 +93,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push(`/${name}`);
-    setname('');
+    // setname('');
   };
   const handleChange = (e) => {
     setname(e.target.value);

@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Tools from '../../Components/tools/index';
 import Platforms from '../../Components/Platforms/practice';
 import YTvideos from '../../Components/YT videos/index';
+import Blogs from './../../Components/Blogs/blogs';
 
 const Index = () => {
   const [open1, setopen1] = useState(true);
@@ -22,7 +23,7 @@ const Index = () => {
           <div className={`cursor-pointer border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open3 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => { setopen1(false); setopen2(false); setopen3(true); }}>Practice</div>
         </div>
         <div className=''>
-          {open1 && <Tools />}
+          {open1 && <Blogs />}
           {open2 && <YTvideos />}
           {open3 && <Platforms />}
         </div>
