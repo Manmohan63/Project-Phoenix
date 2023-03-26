@@ -20,6 +20,7 @@ import { RiMoonFill } from 'react-icons/ri'
 import { BsFillSunFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
 import { useRouter } from 'next/navigation';
+import { Offline, Online } from "react-detect-offline";
 
 
 const firebaseApp = initializeApp({
@@ -65,8 +66,10 @@ const Navbar = ({theme, choosetheme}) => {
             toggle={setOpen}
           />
         </div>
-        {isOpen && <div className="fixed top-[64px] right-0 h-auto w-[40vw] z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
-          <div className={`flex flex-col justify-between items-center`}>
+        {isOpen && <div className="fixed top-[64px] right-0 h-auto z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
+          <div className={`flex flex-col justify-between items-center px-2`}>
+            <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
+          <Search/>
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
             {user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}
             <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
@@ -75,6 +78,7 @@ const Navbar = ({theme, choosetheme}) => {
 
         }
         <div className={`flex justify-between items-center sm:hidden`}>
+          <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
           <Search/>
           <button 
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
@@ -99,8 +103,8 @@ const Search = () => {
     setname(e.target.value);
   };
   return (
-    <form onSubmit={handleSubmit} className='border-2 border-main rounded-md text-dark__blue m-4 flex items-center justify-center'>
-      <label className='my-1.5 mx-1 w-[15vw]'>
+    <form onSubmit={handleSubmit} className='border-2 border-main rounded-md text-dark__blue m-4 flex items-center justify-center mx-2 md:w-full sm:w-full'>
+      <label className='my-1.5 mx-1 w-[15vw] md:w-full sm:w-full'>
         <input type="text" className='p-1 w-full rounded-md h-[30px]' placeholder={`Search profiles`}
           value={name} onChange={handleChange}
         />

@@ -20,9 +20,9 @@ const Homeredirect = () => {
                     transition={{ duration: 0.3 }}>
                     A place to exchange your ideas and contribute to the Community. It allows users to post messages, comments, and questions, which can be viewed and responded to by other users.</motion.p>}</div>
             </Link>
-            <Link href='/calendar' onMouseOver={() => sethover2(true)}
+            <Link href='/events' onMouseOver={() => sethover2(true)}
                 onMouseOut={() => sethover2(false)}>
-                <div className={style}> {!ishover2 ? "Calendar" : <motion.p className='text-2xl md:text-xl'
+                <div className={style}> {!ishover2 ? "Events" : <motion.p className='text-2xl md:text-xl'
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3 }}>This will help you to list the dates and times of upcoming programming contests and other related events.</motion.p>}</div>
