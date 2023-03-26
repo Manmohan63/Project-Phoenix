@@ -221,7 +221,7 @@ const Supported_platforms = () => {
     ];
     return (
         <>
-            <h1 className='text-3xl font-bold m-2'>Supported Platforms :</h1>
+            <h1 className='text-3xl md:text-2xl sm:text-2xl font-bold m-2'>Supported Platforms :</h1>
             <div className='w-full grid grid-cols-3 grid-template-rows-global md:grid-cols-2 sm:grid-cols-1'>
                 {data.map((d, index) => (
                     <div key={index}>
