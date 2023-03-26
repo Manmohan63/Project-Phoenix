@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs  } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -16,5 +16,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+export async function isUserIdTaken(userId) {
+  const usersRef = collection(db, 'users');
+  const q = query(usersRef, where('userId', '==', userId));
+  const querySnapshot = await getDocs(q);
+  return !querySnapshot.empty;
+}
+
 
 export { app, db, auth }; 

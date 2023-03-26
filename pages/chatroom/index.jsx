@@ -1,5 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect,useRef, useState } from "react";
 import Head from 'next/head'
+import Link from 'next/link'
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -7,15 +8,19 @@ import {
   orderBy,
   query,
   limit,
+  doc,
+  getDoc,
   addDoc,
   getDocs,
   serverTimestamp,
 } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+import { getAuth, GoogleAuthProvider, signInWithPopup,onAuthStateChanged } from "firebase/auth";
 //import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 //import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { app, db, auth } from '../../firebaseclient';
+
 // const firebaseApp=initializeApp({
 //   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
 //   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -46,7 +51,7 @@ const Chat = () => {
           {/* <SignOut /> */}
         </header>
 
-        <section>{user ? <ChatRoom /> : <SignIn />}</section>
+        <section>{user ? <ChatRoom /> : <Link href="/signup">SignIn/SignUp</Link>}</section>
         {/* <ChatRoom/> */}
       </div>
     </>
@@ -87,21 +92,39 @@ function ChatRoom() {
 
   const [messages, setMessages] = useState([]);
   const [formValue, setFormValue] = useState("");
-
+  const [user, setUser] = useState(null);
 
   getDocs(q).then((response) => {
     setMessages(response.docs.map((doc) => doc.data()));
   });
+  useEffect(() => {
+    const auth = getAuth(app);
+
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const db = getFirestore(app);
+        const userDoc = await getDoc(doc(db, 'users', user.uid));
+        setUser(userDoc.data());
+      }
+    });
+
+    return unsubscribe;
+  }, []);
 
   const sendMessage = async (e) => {
+    
+
+
     e.preventDefault();
-
+    //const user=auth.currentUser;
     const { uid } = auth.currentUser;
-
+    
+    const {displayName}=auth.currentUser;
     await addDoc(collection(db, "messages"), {
       text: formValue,
       createdAt: serverTimestamp(),
       uid,
+      displayName : user.name,
     });
 
     setFormValue("");
@@ -132,16 +155,39 @@ function ChatRoom() {
   );
 }
 
+
 function ChatMessage(props) {
-  const { text, uid } = props.message;
+  const user=auth.currentUser;
+  // const [user, setUser] = useState(null);
 
+  // useEffect(() => {
+  //   const auth = getAuth(app);
+
+  //   const unsubscribe = onAuthStateChanged(auth, async (user) => {
+  //     if (user) {
+  //       const db = getFirestore(app);
+  //       const userDoc = await getDoc(doc(db, 'users', user.uid));
+  //       setUser(userDoc.data());
+  //     }
+  //   });
+
+  //   return unsubscribe;
+  // }, []);
+  // const ema=user.email;
+  const { text, uid, displayName } = props.message;
+  
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
-
+ // const emailtoshow=user.email;
+  //console.log(user.name);
+  
   return (
     <>
-      <div className={`message ${messageClass}`}>
-
-        <p>{text}</p>
+      <div className={`message ${messageClass} border-main`}>
+        {/* <p>{user.displayName}</p> */}
+        {/* <p><MessengerName/></p> */}
+        {/* {user.email} */}
+        <p className={` text-main  ${messageClass === "sent" ? "text-right" : "text-left"}`}>{displayName}</p>
+        <p className={` text-dark__blue bg-main ${messageClass === "sent" ? "text-right" : "text-left"}`}>{text}</p>
       </div>
     </>
   );
