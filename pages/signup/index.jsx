@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
-
-
+import { SignIn, SignInGoogle } from '@/Components/Navbar';
+import { isUserIdTaken } from '@/firebaseclient';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router'
 const firebaseConfig = {
 
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -30,13 +34,20 @@ const SignupForm = () => {
   const [state, setState] = useState('');
   const [collegename, setCollegename] = useState('');
   const [interestedin, setInterestedin] = useState('');
-
+  const [userId, setUserId] = useState('')
+  const [userIdError, setUserIdError] = useState('')
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const router=useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-
-    if (!codeforcesId || !name || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
+    
+    if (await isUserIdTaken(userId)) {
+      setUserIdError('User ID is already taken')
+      return;
+    } 
+    
+    if (!userId||!codeforcesId || !name || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');
       return;
     }
@@ -45,7 +56,7 @@ const SignupForm = () => {
 
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-
+      
 
       await setDoc(doc(db, 'users', user.uid), {
         codeforcesId,
@@ -59,12 +70,28 @@ const SignupForm = () => {
         state,
         collegename,
         interestedin,
+        userId,
       });
-
+       toast.success('Successfully signed up!');
+      //setTimeout(router.push('/'),5000);
 
     } catch (error) {
       alert(error.message);
     }
+   
+        setCodeforcesId('');
+        setLeetcodeId('');
+        setName('');
+        setEmail('');
+        setPassword('');
+        setDob('');
+        setCity('');
+        setGender('');
+        setState('');
+        setCollegename('');
+        setInterestedin('');
+        setUserId('');
+        
   };
   let style = "text__black p-1.5 my-1.5 w-3/5 bg-transparent border-2 border-main rounded-md sm:w-full";
   return (
@@ -75,14 +102,8 @@ const SignupForm = () => {
         </h1>
         <p className='text-center text-xl md:text-lg sm:text-base'>We&apos;re excited to have you join our community. Please take a few moments to fill out the form below and create your account.</p>
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center my-4">
-          <label>
-            Codeforces ID:
-            <input className={style} type="text" value={codeforcesId} onChange={(e) => setCodeforcesId(e.target.value)} />
-          </label>
-          <label>
-            Leetcode ID:
-            <input className={style} type="text" value={leetcodeId} onChange={(e) => setLeetcodeId(e.target.value)} />
-          </label>
+       
+         
           <label>
             Name:
             <input className={style} type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -94,6 +115,19 @@ const SignupForm = () => {
           <label>
             Password:
             <input className={style} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </label>
+          <label>
+        User ID:
+        <input className={style} type="text" value={userId} onChange={(event) => setUserId(event.target.value)} />
+        {userIdError && <div>{userIdError}</div>}
+      </label>
+          <label>
+            Codeforces ID:
+            <input className={style} type="text" value={codeforcesId} onChange={(e) => setCodeforcesId(e.target.value)} />
+          </label>
+          <label>
+            Leetcode ID:
+            <input className={style} type="text" value={leetcodeId} onChange={(e) => setLeetcodeId(e.target.value)} />
           </label>
           <label>
             Date of Birth:
@@ -120,12 +154,21 @@ const SignupForm = () => {
             <input className={style} type="text" value={interestedin} onChange={(e) => setInterestedin(e.target.value)} />
           </label>
           <button type="submit">Sign up</button>
+          <ToastContainer/>
+          
           {/*By clicking "Sign Up," you agree to our Terms of Service and Privacy Policy.
 
 Once you've completed the form, click "Sign Up" to create your account. You'll receive a confirmation email with instructions on how to verify your account and get started.
 
 Thank you for joining our community! */}
         </form>
+        {/* {showSuccessMessage && (
+        <div className="success-message">Sign up successful!</div>
+      )} */}
+        <p>Already a User</p>
+        <p> Sign In</p>
+          <SignIn/>
+         
       </div>
     </div>
   );
