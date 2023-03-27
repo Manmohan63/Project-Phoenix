@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
+import Link from 'next/link';
 const firebaseConfig = {
 
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -165,9 +166,9 @@ Thank you for joining our community! */}
         {/* {showSuccessMessage && (
         <div className="success-message">Sign up successful!</div>
       )} */}
-        <p>Already a User</p>
-        <p> Sign In</p>
-          <SignIn/>
+        <p>Already a User? <Link href='/signin'>Sign In</Link></p>
+        {/* <SignIn/> */}
+          
          
       </div>
     </div>

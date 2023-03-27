@@ -85,7 +85,9 @@ const Navbar = ({theme, choosetheme}) => {
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
          
-          <section>{user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} />}</section>
+          <section>{user ? <SignOut theme={theme} /> : 
+          <div className='flex'> <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} >Sign Up</Link>
+          <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} >Sign In</Link></div>}</section>
         </div>
       </div>
     </div>
