@@ -21,7 +21,7 @@ import { BsFillSunFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
 import { useRouter } from 'next/navigation';
 import { Offline, Online } from "react-detect-offline";
-
+import { auth } from '@/firebaseclient';
 
 const firebaseApp = initializeApp({
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -31,8 +31,8 @@ const firebaseApp = initializeApp({
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
 });
-const auth = getAuth();
-const firestore = getFirestore(firebaseApp);
+
+
 const style__button = "border-2 m-2 p-1.5 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
 
 const Navbar = ({theme, choosetheme}) => {
@@ -70,8 +70,8 @@ const Navbar = ({theme, choosetheme}) => {
           <div className={`flex flex-col justify-between items-center px-2`}>
             <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
           <Search/>
-            <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
-            {user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}
+            
+            {user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} />}
             <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
         </div>
@@ -84,8 +84,8 @@ const Navbar = ({theme, choosetheme}) => {
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
-          <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up&nbsp;</Link>
-          <section>{user ? <SignOut theme={theme} /> : <SignIn theme={theme} />}</section>
+         
+          <section>{user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} />}</section>
         </div>
       </div>
     </div>
@@ -117,16 +117,43 @@ const Search = () => {
 
 }
 
-function SignIn({theme}) {
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
+
+export function SignIn({theme}) {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorp, setErrorp] = useState('')
+
+  const router = useRouter();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log("logged In");
+        router.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        //alert('email or password not correct');
+        setErrorp('email or password not correct')
+        // ..
+      });
+  }
 
   return (
-    <button className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} onClick={signInWithGoogle}>
-      Sign in
-    </button>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email:
+        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+      </label>
+      <label>
+        Password:
+        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+        {errorp && <div>{errorp}</div>}
+      </label>
+      <button type="submit">Sign In</button>
+    </form>
   );
 }
 
