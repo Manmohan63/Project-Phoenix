@@ -20,9 +20,9 @@ const Index = () => {
         cheating in any way, please report it to the admins. Your privacy will be 
         respected.
         • Be civil. All communications should be respectful. 
-        • Try to practice "Agree to Disagree", and if things start to get heated, 
+        • Try to practice &quot;Agree to Disagree&quot;, and if things start to get heated, 
         please contact the admins in the DMs. 
-        • All Cap sentences should be avoided. For example: "I SAID, LET'S SEE" 
+        • All Cap sentences should be avoided. For example: &quot;I SAID, LET&apos;S SEE&quot; 
         etc.
         • Respect privacy.
         • Be nice to everyone and try to keep this a friendly environment. 
