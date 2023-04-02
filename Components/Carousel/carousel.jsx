@@ -15,12 +15,8 @@ const images = [
         alt: "image 2",
     },
     {
-        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/307752438_415835390664637_3534036197302672937_n_wfr6fi.jpg",
-        alt: "image 3",
-    },
-    {
-        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/302443510_822286705609631_3473952214574021331_n_epcmhf.jpg",
-        alt: "image 4",
+        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679241238/IMG_20220725_191111_cyhcd7.jpg",
+        alt: "image 7",
     },
     {
         src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/283119318_1176580216437313_7004400500214089155_n_vgmitz.jpg",
@@ -31,8 +27,12 @@ const images = [
         alt: "image 6",
     },
     {
-        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679241238/IMG_20220725_191111_cyhcd7.jpg",
-        alt: "image 7",
+        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/307752438_415835390664637_3534036197302672937_n_wfr6fi.jpg",
+        alt: "image 3",
+    },
+    {
+        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/302443510_822286705609631_3473952214574021331_n_epcmhf.jpg",
+        alt: "image 4",
     },
 ];
 
@@ -53,7 +53,7 @@ export default function ImageCarousel() {
                             <Image
                                 src={image.src}
                                 alt={image.alt}
-                                className="w-[30vw] h-full object-cover border-r-2 border-main"
+                                className="w-[30vw] h-full object-cover border-x-2 border-main"
                                 height={1500}
                                 width={1500}
                             />

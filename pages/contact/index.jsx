@@ -37,7 +37,7 @@ export default function Contact() {
       <Head>
         <title>Contact | CP Unofficial</title>
       </Head>
-      <div className={`pt-16 pb-20 px-20 sm:pt-4 sm:pb-6 sm:px-6`}>
+      <div className={`pt-16 pb-20 px-20 sm:pt-4 sm:pb-6 sm:px-6 backdrop-blur-sm`}>
         <div className="flex flex-col justify-center border-4 border-current p-5 sm:p-2 h-full rounded-lg backdrop-blur-sm">
           <h1 className="text-5xl font-semibold leading-8 justify-center p-6 flex md:text-4xl sm:text-2xl">
             Contact Us

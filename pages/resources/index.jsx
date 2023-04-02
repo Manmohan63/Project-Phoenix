@@ -14,7 +14,7 @@ const Index = () => {
       <Head>
         <title>Resources | CP Unofficial</title>
       </Head>
-      <div className=''>
+      <div className='backdrop-blur-sm'>
         <div className='w-full flex items-center border-b-2'>
           <div className={`cursor-pointer border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open1 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => {
             setopen1(true); setopen2(false); setopen3(false);

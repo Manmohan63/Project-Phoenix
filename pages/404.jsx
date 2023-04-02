@@ -26,7 +26,7 @@ const Error = ({theme}) => {
       <Head>
         <title>Error | 404</title>
       </Head>
-        <div className={"h-[90vh] flex flex-col justify-center items-center"}>
+        <div className={"h-[90vh] flex flex-col justify-center items-center backdrop-blur-sm"}>
           <div className={"flex justify-center items-center"}>
           <Image
               src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678289997/4_foug3j.png"}
@@ -40,7 +40,7 @@ const Error = ({theme}) => {
           <Image
               src={"https://res.cloudinary.com/dk8ign4oc/image/upload/v1678290002/logo_center_jkjeyw.png"}
             alt="Phoenix"
-              className={"max-w-sm shadow-inherit box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);"}
+              className={"max-w-sm shadow-inherit"}
               width={2250}
               height={1390}
               layout="responsive"

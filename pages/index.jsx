@@ -13,7 +13,7 @@ const Index = () => {
       <Head>
         <title>Home | CP Unofficial</title>
       </Head>
-    <div className='flex items-center flex-col'>
+    <div className='flex items-center flex-col backdrop-blur-sm'>
       <div className="flex flex-col items-center justify-start w-full">
         <Carousel />
       </div>

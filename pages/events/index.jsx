@@ -6,10 +6,10 @@ import Image from 'next/image';
 const Index = () => {
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
-  const [checked3, setChecked3] = useState(true);
-  const [checked4, setChecked4] = useState(true);
-  const [checked5, setChecked5] = useState(true);
-  const [checked6, setChecked6] = useState(true);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
+  const [checked6, setChecked6] = useState(false);
   let check__style='mr-1 h-[18px] w-[18px]';
   let label__style='text-xl p-1 rounded-md border-2 bg-main text-dark__blue text-center flex items-center justify-between w-5/6';
   return (
@@ -17,7 +17,7 @@ const Index = () => {
       <Head>
         <title>Events | CP Unofficial</title>
       </Head>
-    <div>
+    <div className='backdrop-blur-sm'>
       <h1 className='text-4xl p-2 mb-2 mt-1 mx-1 text-center bg-main text-dark__blue border-4 border-[black]'>Upcoming Contests</h1>
       <div className="grid grid-cols-6 p-2 justify-items-center md:grid-cols-2 sm:grid-cols-1">
         <label className={label__style}>
@@ -124,7 +124,7 @@ const Searchcontent = ({checked1,checked2,checked3,checked4,checked5,checked6}) 
     useEffect(() => {
       const words = [`${checked1?"CodeForces":""}`, `${checked2?"CodeChef":""}`,`${checked3?"AtCoder":""}`, `${checked4?"LeetCode":""}`, `${checked5?"HackerRank":""}`, `${checked6?"HackerEarth":""}`];
       const total_data = events.filter(contest=>{
-        return words.includes(contest.site)
+        return (words.includes(contest.site) && (contest.duration/60 <=22000))
       });
       setdata__to__show(total_data);
     },[checked1,checked2,checked3,checked4,checked5,checked6,events]);
@@ -147,7 +147,7 @@ const Searchcontent = ({checked1,checked2,checked3,checked4,checked5,checked6}) 
     <div>
       <div className='w-full flex items-center justify-between'>
       <h1 className='text-2xl m-2'>{data__to__show.length} Results Found</h1>
-      <span className='mr-2 text-sm italic'>This page will automatically refresh in {counter} minutes</span>
+      <span className='mr-2 text-sm italic'>This data will automatically refresh in {counter} minutes</span>
       </div>
       <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'>
         {data__to__show.map((d, index) => (
