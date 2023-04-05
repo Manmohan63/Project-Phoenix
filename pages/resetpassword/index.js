@@ -50,7 +50,7 @@ export default function ForgotPassword() {
             <button type="submit">Reset Password</button>
           </form>
           {errorMessage && <div>{errorMessage}</div>}
-        </div>
+        </div> 
       ) : (
         <div>
           <h1>Forgot Password</h1>
