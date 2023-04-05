@@ -7,6 +7,7 @@ import { isUserIdTaken } from '@/firebaseclient';
 import { BsArrowRightCircle } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
@@ -33,15 +34,19 @@ const SignupForm = ({theme}) => {
   const [lastname, setlastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmpassword, setConfirmpassword] = useState('');
   const [dob, setDob] = useState('');
   const [city, setCity] = useState('');
   const [gender, setGender] = useState('');
   const [state, setState] = useState('');
   const [collegename, setCollegename] = useState('');
   const [interestedin, setInterestedin] = useState('');
-  const [userId, setUserId] = useState('')
-  const [userIdError, setUserIdError] = useState('')
+  const [userId, setUserId] = useState('');
+  const [userIdError, setUserIdError] = useState('');
+  const [errormessage, setErrorMessage]=useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showconfirmPassword, setShowconfirmPassword] = useState(false)
   const router=useRouter();
 
   const handleSubmit = async (e) => {
@@ -51,8 +56,12 @@ const SignupForm = ({theme}) => {
       setUserIdError('User ID is already taken')
       return;
     } 
+    if (password !== confirmpassword) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
     setName(firstname+" "+lastname);
-    if (!userId||!codeforcesId || !firstname || !lastname || !name || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
+    if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');
       return;
     }
@@ -86,7 +95,8 @@ const SignupForm = ({theme}) => {
    
         setCodeforcesId('');
         setLeetcodeId('');
-        setName('');
+        setfirstName('');
+        setlastName('');
         setEmail('');
         setPassword('');
         setDob('');
@@ -96,6 +106,7 @@ const SignupForm = ({theme}) => {
         setCollegename('');
         setInterestedin('');
         setUserId('');
+        setConfirmpassword('');
         
   };
   const handlegender=(e)=>{
@@ -167,14 +178,28 @@ const SignupForm = ({theme}) => {
             <input className={style} placeholder={`Institute Name`} type="text" value={collegename} onChange={(e) => setCollegename(e.target.value)} />
             
             <input className={style} placeholder={`Interested in`} type="text" value={interestedin} onChange={(e) => setInterestedin(e.target.value)} />
-            <input className={style} placeholder={`Set a new Password`} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="flex text__black w-3/5 sm:w-full">
+              <div className="relative">
+            <input className="text__black w-full p-1.5 my-1.5 bg-transparent border-4 border-dark__blue rounded-md focus:border-main " placeholder={`Set a new Password`} type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="absolute top-1/2 transform -translate-y-1/2 right-4 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
+            </div>
+            <div className='relative'>
+            <input className="text__black w-full p-1.5 my-1.5 bg-transparent border-4 border-dark__blue rounded-md focus:border-main ml-3 " placeholder={`Confirm Password`} type={showconfirmPassword ? "text" : "password"} value={confirmpassword} onChange={(e) => setConfirmpassword(e.target.value)} />
+            <div className="absolute top-1/2 transform -translate-y-1/2 right-4 cursor-pointer" onClick={() => setShowconfirmPassword(!showconfirmPassword)}>
+              {showconfirmPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </div>
+            </div>
+            </div>
+            {errormessage && <div>{errormessage}</div>}
             <p>Already a User? <Link href='/signin' className='hover:underline'>Sign In</Link></p>
           <button type="submit" className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
           <ToastContainer/>
           
           {/*By clicking "Sign Up," you agree to our Terms of Service and Privacy Policy. Thank you for joining our community! */}
         </form>
-      </div>
+      </div> 
     </div>
     </>
   );
