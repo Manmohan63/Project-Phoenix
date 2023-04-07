@@ -21,22 +21,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 //import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { app, db, auth } from '../../firebaseclient';
 
-// const firebaseApp=initializeApp({
-//   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-//   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-//   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-//   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-//   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID,
-//   appId: process.env.NEXT_PUBLIC_FIREBASE_APPID,
-// });
-//const app1 = initializeApp(firebaseConfig);
-// if (!firebase.apps.length) {
-//   firebase.initializeApp(app);
-// }
-//console.log(process.env.MY_A);
-//const app = initializeApp(firebaseApp);
-//export const auth = getAuth();
-//const firestore = getFirestore(firebaseApp);
+
 
 const Chat = () => {
   const [user] = useAuthState(auth);
@@ -46,8 +31,8 @@ const Chat = () => {
         <title>Chatroom | CP Unofficial</title>
       </Head>
       <div className="App">
-        <header>
-          <h1>Chatroom</h1>
+        <header className="">
+          <h1 className="">Chatroom</h1>
           {/* <SignOut /> */}
         </header>
 
@@ -57,21 +42,7 @@ const Chat = () => {
     </>
   );
 }
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
-  };
 
-  return (
-    <div className="">
-      <button className='sign-in' onClick={signInWithGoogle}>
-        Sign in
-      </button>
-
-    </div>
-  );
-}
 
 
 function SignOut() {
@@ -133,14 +104,14 @@ function ChatRoom() {
 
   return (
     <>
-      <main>
+      <main className= "flex-1 overflow-y-auto px-4 py-6">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
 
-      <form onSubmit={sendMessage}>
+      <form onSubmit={sendMessage} className="flex items-center border-t-2 border-gray-300 py-2 px-4">
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
@@ -156,45 +127,59 @@ function ChatRoom() {
 }
 
 
-function ChatMessage(props) {
-  const user=auth.currentUser;
-  // const [user, setUser] = useState(null);
+// function ChatMessage(props) {
+//   const user=auth.currentUser;
+//   // const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   const auth = getAuth(app);
+//   // useEffect(() => {
+//   //   const auth = getAuth(app);
 
-  //   const unsubscribe = onAuthStateChanged(auth, async (user) => {
-  //     if (user) {
-  //       const db = getFirestore(app);
-  //       const userDoc = await getDoc(doc(db, 'users', user.uid));
-  //       setUser(userDoc.data());
-  //     }
-  //   });
+//   //   const unsubscribe = onAuthStateChanged(auth, async (user) => {
+//   //     if (user) {
+//   //       const db = getFirestore(app);
+//   //       const userDoc = await getDoc(doc(db, 'users', user.uid));
+//   //       setUser(userDoc.data());
+//   //     }
+//   //   });
 
-  //   return unsubscribe;
-  // }, []);
-  // const ema=user.email;
-  const { text, uid, displayName } = props.message;
+//   //   return unsubscribe;
+//   // }, []);
+//   // const ema=user.email;
+//   const { text, uid, displayName } = props.message;
   
-  const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
- // const emailtoshow=user.email;
-  //console.log(user.name);
+//   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+//  // const emailtoshow=user.email;
+//   //console.log(user.name);
+  
+//   return (
+//     <>
+//       <div className={`message ${messageClass} border-main`}>
+//         {/* <p>{user.displayName}</p> */}
+//         {/* <p><MessengerName/></p> */}
+//         {/* {user.email} */}
+//         <p className={` text-main  ${messageClass === "sent" ? "text-right" : "text-left"}`}>{displayName}</p>
+//         <p className={` text-dark__blue bg-main ${messageClass === "sent" ? "text-right" : "text-left"}`}>{text}</p>
+//       </div>
+//     </>
+//   );
+//}
+function ChatMessage(props) {
+  const messageClass = props.message.uid === auth.currentUser.uid ? "flex-row-reverse" : "flex-row";
   
   return (
     <>
-      <div className={`message ${messageClass} border-main`}>
-        {/* <p>{user.displayName}</p> */}
-        {/* <p><MessengerName/></p> */}
-        {/* {user.email} */}
-        <p className={` text-main  ${messageClass === "sent" ? "text-right" : "text-left"}`}>{displayName}</p>
-        <p className={` text-dark__blue bg-main ${messageClass === "sent" ? "text-right" : "text-left"}`}>{text}</p>
+      <div className={`flex ${messageClass} mb-4 items-end`}>
+        <div className="flex flex-col">
+          <p className="text-sm text-gray-500 mb-1">{props.message.displayName}</p>
+          <p className={` bg-main  text-dark__blue rounded-lg p-2 text-white ${messageClass === "flex-row" ? "bg-gray-100 text-gray-700" : "bg-blue-500"}`}>{props.message.text}</p>
+        </div>
       </div>
     </>
   );
 }
 
 
-export { SignIn, SignOut };
+export {  SignOut };
 export default Chat
 
 
