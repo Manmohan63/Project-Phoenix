@@ -33,7 +33,7 @@ const firebaseApp = initializeApp({
 });
 
 
-const style__button = "border-2 m-2 p-1.5 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
+const style__button = "border-2 m-2 md:text-base p-1.5 md:px-1.5 md:py-0 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
 
 const Navbar = ({theme, choosetheme}) => {
   const [user] = useAuthState(auth);
@@ -71,7 +71,11 @@ const Navbar = ({theme, choosetheme}) => {
             <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
           <Search/>
             
-            {user ? <SignOut theme={theme} /> : <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} />}
+           <section> {user ? <SignOut theme={theme} /> :
+            <div className="flex flex-col"> 
+            <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
+            <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignIn</Link></div>}</section>
+            
             <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
         </div>
