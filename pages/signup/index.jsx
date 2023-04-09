@@ -132,7 +132,7 @@ const SignupForm = ({theme}) => {
         </h1>
         <p className='text-center text-xl md:text-lg sm:text-base'>We&apos;re excited to have you join our community. Please take a few moments to fill out the form below and create your account.</p>
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center my-4 sm:text-sm">
-            <div className="flex text__black w-3/5 sm:w-full md:w-full sm:w-full md:w-full md:w-full">
+            <div className="flex text__black w-3/5 sm:w-full md:w-full odd:">
               <div className='flex flex-col w-full'>
                 <label className='text-main '>First Name </label>
                 <input className={style + `w-full`} placeholder={`Your First name`} type="text" value={firstname} onChange={(e) => setfirstName(e.target.value)} />
@@ -143,7 +143,7 @@ const SignupForm = ({theme}) => {
               </div>
             </div>
 
-            <div className='flex w-3/5 sm:w-full md:w-full sm:w-full md:w-full'>  
+            <div className='flex w-3/5 sm:w-full md:w-full'>  
               <div className='flex flex-col grow'>
                     <label className='w-3/5 sm:w-full md:w-full'>Email </label>
                     <input className={style + `w-full`} placeholder={`Your Email`} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -221,7 +221,7 @@ const SignupForm = ({theme}) => {
 
             </div>
             <p className='text-base text-dark__blue bg-main p-1 sm:p-3 rounded-md m-2'>
-              By clicking "Sign Up", you agree to our <span onClick={() => redirecting__alert()} className='hover:underline cursor-pointer'> Terms of Service</span>. Thank you for joining our community!
+              By clicking &apos;Sign Up&apos;, you agree to our <span onClick={() => redirecting__alert()} className='hover:underline cursor-pointer'> Terms of Service</span>. Thank you for joining our community!
             </p>
 
             {errormessage && <div>{errormessage}</div>}
