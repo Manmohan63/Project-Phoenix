@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import { SignIn, SignInGoogle } from '@/Components/Navbar';
-import { isUserIdTaken } from '@/firebaseclient';
+import { isUserIdTaken,isemailIdTaken } from '@/firebaseclient';
 import { BsArrowRightCircle } from "react-icons/bs";
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
@@ -27,40 +27,56 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const SignupForm = ({theme}) => {
-  const [codeforcesId, setCodeforcesId] = useState('');
-  const [leetcodeId, setLeetcodeId] = useState('');
-  const [name, setName] = useState('');
-  const [firstname, setfirstName] = useState('');
-  const [lastname, setlastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmpassword] = useState('');
-  const [dob, setDob] = useState('');
-  const [city, setCity] = useState('');
-  const [gender, setGender] = useState('');
-  const [state, setState] = useState('');
-  const [collegename, setCollegename] = useState('');
-  const [interestedin, setInterestedin] = useState('');
-  const [userId, setUserId] = useState('');
-  const [userIdError, setUserIdError] = useState('');
-  const [errormessage, setErrorMessage]=useState('');
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showconfirmPassword, setShowconfirmPassword] = useState(false);
+  let [codeforcesId, setCodeforcesId] = useState('');
+  let [leetcodeId, setLeetcodeId] = useState('');
+  let [name, setName] = useState('');
+  let [firstname, setfirstName] = useState('');
+  let [lastname, setlastName] = useState('');
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
+  let [confirmpassword, setConfirmpassword] = useState('');
+  let [dob, setDob] = useState('');
+  let [city, setCity] = useState('');
+  let [gender, setGender] = useState('');
+  let [state, setState] = useState('');
+  let [collegename, setCollegename] = useState("National Institute of Technology, Rourkela");
+  let [interestedin, setInterestedin] = useState('');
+  let [userId, setUserId] = useState('');
+  let [userIdError, setUserIdError] = useState('');
+  let [errormessage, setErrorMessage]=useState('');
+  let [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  let [showPassword, setShowPassword] = useState(false);
+  let [showconfirmPassword, setShowconfirmPassword] = useState(false);
   const router=useRouter();
 
+  var str;
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (await isUserIdTaken(userId)) {
-      setUserIdError('User ID is already taken')
+      setErrorMessage('User ID is already taken')
+      return;
+    } 
+    if (await isemailIdTaken(email)) {
+      setErrorMessage('Email ID is already taken')
       return;
     } 
     if (password !== confirmpassword) {
       setErrorMessage("Passwords do not match");
       return;
     }
-    setName(firstname+" "+lastname);
+    firstname=firstname.trim();
+    lastname=lastname.trim();
+    codeforcesId=codeforcesId.trim();
+    leetcodeId=leetcodeId.trim();
+    email=email.trim();
+    city=city.trim();
+    gender=gender.trim();
+    state=state.trim();
+    collegename=collegename.trim();
+    lastname=lastname.trim();
+    str = firstname+" "+lastname;
+    setName(str);
     if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');
       return;
@@ -87,7 +103,7 @@ const SignupForm = ({theme}) => {
         userId,
       });
        toast.success('Successfully signed up!');
-      //setTimeout(router.push('/'),5000);
+       router.push('/');
 
     } catch (error) {
       alert(error.message);
@@ -115,7 +131,7 @@ const SignupForm = ({theme}) => {
   const [redirect, setredirect] = useState(false);
   const redirecting__alert=()=>{
     if(confirm("Warning: You'll be redirected to another page, all the data on this form will reset and cannot be recovered.")){
-      router.push('/terms_and_conditions')
+      router.push('/terms_and_conditions');
     }
   }
   let style = "text__black p-1.5 my-1.5 w-3/5 sm:w-full md:w-full bg-transparent border-4 border-dark__blue rounded-md sm:w-full md:w-full focus:border-main ";
@@ -131,7 +147,7 @@ const SignupForm = ({theme}) => {
           Sign Up
         </h1>
         <p className='text-center text-xl md:text-lg sm:text-base'>We&apos;re excited to have you join our community. Please take a few moments to fill out the form below and create your account.</p>
-        <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center my-4 sm:text-sm">
+        <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center my-4 sm:text-sm" onClick={()=>setErrorMessage("")}>
             <div className="flex text__black w-3/5 sm:w-full md:w-full odd:">
               <div className='flex flex-col w-full'>
                 <label className='text-main '>First Name </label>
@@ -146,7 +162,7 @@ const SignupForm = ({theme}) => {
             <div className='flex w-3/5 sm:w-full md:w-full'>  
               <div className='flex flex-col grow'>
                     <label className='w-3/5 sm:w-full md:w-full'>Email </label>
-                    <input className={style + `w-full`} placeholder={`Your Email`} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input className={style + `w-full`} placeholder={`Your Email`} type="email" value={email} onChange={(e) => setEmail(e.target.value)} onClick={()=>setErrorMessage("")} />
               </div>        
               <div className='flex flex-col ml-3'>
                     <label for="Gender">Gender</label>
@@ -160,8 +176,8 @@ const SignupForm = ({theme}) => {
             </div>                    
 
         <label className='w-3/5 sm:w-full md:w-full '>CP Unofficial ID </label>
-        <input className={style} placeholder={`CP Unofficial ID`} type="text" value={userId} onChange={(event) => setUserId(event.target.value)} />
-        {userIdError && <div>{userIdError}</div>}
+        <input className={style} placeholder={`CP Unofficial ID`} type="text" value={userId} onChange={(event) => {
+          setUserId(event.target.value);}} onClick={()=>setErrorMessage("")}/>
 
             <div className="flex text__black w-3/5 sm:w-full md:w-full sm:flex-col">
               <div className='flex flex-col w-full'>
@@ -195,7 +211,7 @@ const SignupForm = ({theme}) => {
             </div>
             
             <label className='w-3/5 sm:w-full md:w-full '>Institute Name </label>
-            <input className={style} placeholder={`Your Institute's Name`} type="text" value={collegename} onChange={(e) => setCollegename(e.target.value)} />
+            <input className={style + 'bg-[white]'} disabled placeholder={`Your Institute's Name`} type="text" value={collegename} onChange={(e) => setCollegename(e.target.value)} />
             
             <label className='w-3/5 sm:w-full md:w-full '>Interested in </label>
             <input className={style} placeholder={`e.g. web developement, Flutter`} type="text" value={interestedin} onChange={(e) => setInterestedin(e.target.value)} />
@@ -224,8 +240,8 @@ const SignupForm = ({theme}) => {
               By clicking &apos;Sign Up&apos;, you agree to our <span onClick={() => redirecting__alert()} className='hover:underline cursor-pointer'> Terms of Service</span>. Thank you for joining our community!
             </p>
 
-            {errormessage && <div>{errormessage}</div>}
             <p>Already a User? <Link href='/signin' className='hover:underline'>Sign In</Link></p>
+            {errormessage && <div className='text-dark__blue bg-main p-1.5 rounded-md'>{errormessage}</div>}
           <button type="submit" className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
           <ToastContainer/>
           

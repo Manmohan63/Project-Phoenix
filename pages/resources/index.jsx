@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Tools from '../../Components/tools/index';
 import Platforms from '../../Components/Platforms/practice';
 import YTvideos from '../../Components/YT videos/index';
-import Blogs from './../../Components/Blogs/blogs';
+import Blogs from '../../Components/Carousel/Blogs/blogs';
 
 const Index = () => {
   const [open1, setopen1] = useState(true);

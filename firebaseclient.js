@@ -23,6 +23,12 @@ export async function isUserIdTaken(userId) {
   const querySnapshot = await getDocs(q);
   return !querySnapshot.empty;
 }
+export async function isemailIdTaken(email) {
+  const usersRef = collection(db, 'users');
+  const q = query(usersRef, where('email', '==', email));
+  const querySnapshot = await getDocs(q);
+  return !querySnapshot.empty;
+}
 
 
 export { app, db, auth }; 
