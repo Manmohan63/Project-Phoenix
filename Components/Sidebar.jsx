@@ -97,7 +97,7 @@ const Sidebar = () => {
           <div className={text__style}>More</div>
         </div>
       </Link>
-      <Link href="/settings">
+      {/* <Link href="/settings">
         <div className={sideicons__styles + `${active6?"text-dark__blue bg-main":""}`} title={"Settings"} onClick={()=>{
           setActive1(false);
           setActive2(false);
@@ -111,7 +111,7 @@ const Sidebar = () => {
           </div>
           <div className={text__style}>settings</div>
         </div>
-      </Link>
+      </Link> */}
     </div>
   )
 }

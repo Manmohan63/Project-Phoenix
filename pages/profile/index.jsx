@@ -24,7 +24,7 @@ const Profile = () => {
 
   if (!user) {
     return (
-      <div>
+      <div className='min-h-screen'>
         <p>Please sign up to view your profile.</p>
         {/* <Link href="/signup"><a>Sign up</a></Link> */}
       </div>
@@ -32,7 +32,7 @@ const Profile = () => {
   }
  
   return (
-    <div className='backdrop-blur-sm'>
+    <div className='backdrop-blur-sm min-h-screen'>
       <Maincontent user={user}/>
     </div>
   );

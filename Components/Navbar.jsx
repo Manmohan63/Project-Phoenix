@@ -38,7 +38,6 @@ const style__button = "border-2 m-2 md:text-base p-1.5 md:px-1.5 md:py-0 rounded
 const Navbar = ({theme, choosetheme}) => {
   const [user] = useAuthState(auth);
   const [isOpen, setOpen] = useState(false);
-  // console.log(theme);
   return (
     <div className={"fixed top-0 right-0 w-full overflow-auto h-[64px] z-[100] overflow-y-hidden text-1.1 border-b-2 border-[#dbad69] flex justify-center items-center " + `${theme ? "bg-bg_blue_phoenix text-main " : "text-light_theme_bg bg-light_theme_ot border-bg-light_theme_ot"}`}>
       <div className={"flex justify-between items-center w-full px-4"}>
@@ -66,12 +65,14 @@ const Navbar = ({theme, choosetheme}) => {
             toggle={setOpen}
           />
         </div>
-        {isOpen && <div className="fixed top-[64px] right-0 h-auto z-10 bg-bg_blue_phoenix border-x-2 border-b-2 border-main rounded-b-lg md:hidden">
+        {isOpen && <div className={`fixed top-[64px] right-0 h-auto z-10 border-x-2 border-b-2 rounded-b-lg md:hidden lg:hidden xl:hidden ${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}` }>
           <div className={`flex flex-col justify-between items-center px-2`}>
             <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
           <Search/>
             
-           <section> {user ? <SignOut theme={theme} /> :
+           <section> 
+            <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
+            {user ? <SignOut theme={theme} /> :
             <div className="flex flex-col"> 
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
             <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignIn</Link></div>}</section>
@@ -85,13 +86,13 @@ const Navbar = ({theme, choosetheme}) => {
           <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
           <Search/>
           <button 
-            className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-[white] hover:bg-[blue] border-blue rounded-full"}`}
+            className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-main hover:bg-light_theme_ot border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
          
           <section>{user ? <SignOut theme={theme} /> : 
-          <div className='flex'> <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} >Sign Up</Link>
-          <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:bg-light_theme_bg hover:text-light_theme_ot border-bg-light_theme_ot rounded-full"}`} >Sign In</Link></div>}</section>
+          <div className='flex'> <Link href='/signup' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign Up</Link>
+          <Link href='/signin' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign In</Link></div>}</section>
         </div>
       </div>
     </div>
@@ -167,7 +168,7 @@ export function SignIn({theme}) {
 function SignOut({theme}) {
   return (
     auth.currentUser && (
-      <button className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`} onClick={() => auth.signOut()}>
+      <button className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} onClick={() => auth.signOut()}>
         Sign Out
       </button>
     )

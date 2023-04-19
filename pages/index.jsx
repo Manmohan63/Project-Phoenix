@@ -25,10 +25,10 @@ const Index = () => {
         </div>
       </div>
       <Homeredirect />
-      <div className='flex w-full justify-around'>
+      {/* <div className='flex w-full justify-around'>
       <Monthly />
       <Weekly />
-      </div>
+      </div> */}
       <Faq/>
     </div>
     </>

@@ -99,7 +99,7 @@ function ChatRoom() {
 
   return (
     <>
-      <main className= "flex-1 overflow-y-auto px-4 py-6">
+      <main className= "flex-1 overflow-y-auto px-4 py-6 min-h-screen">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
