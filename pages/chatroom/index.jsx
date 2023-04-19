@@ -32,7 +32,7 @@ const Chat = () => {
         <title>Chatroom | CP Unofficial</title>
       </Head>
       <div className="App">
-        <section>{user ? <ChatRoom /> : <Link href="/signup">SignIn/SignUp</Link>}</section>
+        <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{user ? <ChatRoom /> : <Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">You are requested to login with your account to access Chatroom. Thank You!</Link>}</section>
       </div>
     </>
   );
@@ -99,7 +99,7 @@ function ChatRoom() {
 
   return (
     <>
-      <main className= "flex-1 overflow-y-auto px-4 py-6 min-h-screen">
+      <main className= "flex-1 overflow-y-auto px-4 py-6 min-h-screen backdrop-blur-sm">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
