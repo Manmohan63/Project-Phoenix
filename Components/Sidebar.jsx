@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react'
 import Link from 'next/link';
 import { IoIosHome } from 'react-icons/io'
@@ -6,7 +7,9 @@ import { FaCalendarAlt } from 'react-icons/fa'
 import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { MdSettings } from 'react-icons/md'
+import { auth } from '@/firebaseclient';
 
+const user=auth.currentUser;
 
 const Sidebar = () => {
   let sideicons__styles = "flex justify-center items-center rounded-md flex-col h-[65px] w-[70px] p-[4px] hover:text-dark__blue hover:bg-main sm:p-0 sm:h-auto sm:w-[50px] sm:p-1 ";
@@ -37,7 +40,7 @@ const Sidebar = () => {
           <div className={text__style}>Home</div>
         </div>
       </Link>
-      <Link href="/chatroom">
+       {user? <Link href="/chatroom">
         <div className={sideicons__styles + `${active2?"text-dark__blue bg-main":""}`} title={"Chatroom"} onClick={()=>{
           setActive1(false);
           setActive2(true);
@@ -51,7 +54,16 @@ const Sidebar = () => {
           </div>
           <div className={text__style}>Chatroom</div>
         </div>
-      </Link>
+      </Link> : <Link href="#"><button className={sideicons__styles + `${active2?"text-dark__blue bg-main":""}`} title={"Chatroom"} onClick={()=>{
+          alert("You need to Sign in or Sign up");
+        }}>
+          <div>
+            <BsFillChatRightFill size={icon__size}/>
+          </div>
+          <div className={text__style}>Chatroom</div>
+        </button>
+        </Link>}
+      
       <Link href="/events">
         <div className={sideicons__styles + `${active3?"text-dark__blue bg-main":""}`} title={"events"} onClick={()=>{
           setActive1(false);
