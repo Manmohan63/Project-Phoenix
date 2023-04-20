@@ -40,7 +40,7 @@ const Sidebar = () => {
           <div className={text__style}>Home</div>
         </div>
       </Link>
-       {user? <Link href="/chatroom">
+       <Link href="/chatroom">
         <div className={sideicons__styles + `${active2?"text-dark__blue bg-main":""}`} title={"Chatroom"} onClick={()=>{
           setActive1(false);
           setActive2(true);
@@ -54,15 +54,7 @@ const Sidebar = () => {
           </div>
           <div className={text__style}>Chatroom</div>
         </div>
-      </Link> : <Link href="#"><button className={sideicons__styles + `${active2?"text-dark__blue bg-main":""}`} title={"Chatroom"} onClick={()=>{
-          alert("You need to Sign in or Sign up");
-        }}>
-          <div>
-            <BsFillChatRightFill size={icon__size}/>
-          </div>
-          <div className={text__style}>Chatroom</div>
-        </button>
-        </Link>}
+      </Link> 
       
       <Link href="/events">
         <div className={sideicons__styles + `${active3?"text-dark__blue bg-main":""}`} title={"events"} onClick={()=>{
