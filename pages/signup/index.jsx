@@ -128,6 +128,14 @@ const SignupForm = ({theme}) => {
   const handlegender=(e)=>{
     setGender(e.target.value)
   }
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'
+      /* you can also use 'auto' behaviour
+         in place of 'smooth' */
+    });
+  }
   const [redirect, setredirect] = useState(false);
   const redirecting__alert=()=>{
     if(confirm("Warning: You'll be redirected to another page, all the data on this form will reset and cannot be recovered.")){
@@ -242,7 +250,7 @@ const SignupForm = ({theme}) => {
 
             <p>Already a User? <Link href='/signin' className='hover:underline'>Sign In</Link></p>
             {errormessage && <div className='text-dark__blue bg-main p-1.5 rounded-md'>{errormessage}</div>}
-          <button type="submit" className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
+          <button type="submit" onClick={scrollToTop} className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
           <ToastContainer/>
           
         </form>
@@ -251,5 +259,6 @@ const SignupForm = ({theme}) => {
     </>
   );
 };
+
 
 export default SignupForm;
