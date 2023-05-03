@@ -4,7 +4,7 @@ useState hook to manage the state of which tab is currently open. The component 
 other components from different files to display the content for each tab. */
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Tools from '../../Components/Tools/index';
+import Tools from '../../Components/Programming Tools/index';
 import Platforms from '../../Components/Platforms/practice';
 import YTvideos from '../../Components/YT videos/index';
 import Blogs from '../../Components/Blogs/blogs';

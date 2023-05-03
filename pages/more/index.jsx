@@ -8,7 +8,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { useState } from 'react';
-import Tools from '../../Components/Tools/index';
+import Tools from '../../Components/Programming Tools/index';
 import Browser_extensions from '../../Components/Browser Extensions/index';
 
 const More = () => {
