@@ -1,3 +1,13 @@
+/* This is a React component that renders a table with data from an array of objects. The component
+imports the React library and defines an array of objects called `data`. It then defines a
+functional component called `Weekly` that returns a table with three columns: Name, Rating, and
+Questions Solved. The data for each row is mapped from the `data` array using the `map` function.
+Finally, the component is exported as the default export. */
+/* The above code is a React component that displays information about various YouTube channels related
+to coding and programming. It uses an array of objects to store the data for each channel, including
+the channel name, link, image address, subscriber count, view count, and video count. The component
+then maps over this array to display each channel's information in a styled card format, including
+the channel name, image, and links to the channel's YouTube page. */
 import React from 'react'
 import Image from 'next/image';
 import { BsBoxArrowUpRight } from "react-icons/bs";

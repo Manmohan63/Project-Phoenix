@@ -1,8 +1,15 @@
+/**
+ * The function renders a page with two tabs, one for displaying tools and the other for displaying
+ * browser extensions.
+ * @returns The `More` component is being returned, which contains a `Head` component from Next.js, a
+ * `div` element with two child `div` elements that toggle between displaying the `Tools` and
+ * `Browser_extensions` components based on the `open` state using conditional rendering.
+ */
 import React from 'react'
 import Head from 'next/head'
 import { useState } from 'react';
-import Tools from '../../Components/tools/index';
-import Browser_extensions from '../../Components/browser_extensions/index';
+import Tools from '../../Components/Tools/index';
+import Browser_extensions from '../../Components/Browser Extensions/index';
 
 const More = () => {
     const [open, setopen] = useState(true);

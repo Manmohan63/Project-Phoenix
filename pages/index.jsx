@@ -1,7 +1,10 @@
+/* This is a React functional component that renders the home page of a website for a community of
+competitive programming enthusiasts. It imports several components from other files, including a
+carousel, a home redirect, and a FAQ section. It also uses the `Head` component from Next.js to set
+the title of the page. The component returns JSX code that defines the layout and content of the
+home page. */
 import React, { useState} from 'react'
 import Carousel from '../Components/Carousel/carousel'
-import Monthly from '../Components/Monthly Scoreboard/monthly';
-import Weekly from '../Components/Weekly Scoreboard/weekly';
 import Homeredirect from '../Components/HomeRedirect/homeredirect';
 import Faq from '../Components/FAQ/FAQ';
 import Link from 'next/link';
@@ -25,10 +28,6 @@ const Index = () => {
         </div>
       </div>
       <Homeredirect />
-      {/* <div className='flex w-full justify-around'>
-      <Monthly />
-      <Weekly />
-      </div> */}
       <Faq/>
     </div>
     </>

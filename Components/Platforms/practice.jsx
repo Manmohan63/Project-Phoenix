@@ -1,3 +1,9 @@
+/* The above code is a React component that renders a grid of items based on data passed as a prop.
+Each item in the grid contains an image, a name, and a link. The component uses the map function to
+iterate over the data array and render each item in a div with a border, padding, and rounded
+corners. The image is displayed in a centered box with a fixed size, and the name is displayed as a
+link that opens in a new tab when clicked. The component also uses responsive design to adjust the
+layout of the grid based on the screen size. */
 import React from 'react'
 import Image from 'next/image';
 import { BsBoxArrowUpRight } from "react-icons/bs";

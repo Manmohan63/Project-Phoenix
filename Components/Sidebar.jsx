@@ -1,3 +1,8 @@
+/* This is a React component that renders a sidebar with icons and links to different pages of a web
+application. It uses the useState hook to manage the active state of each icon, and the Link
+component from the Next.js library to handle client-side navigation. It also imports several icons
+from different libraries to use as the icons for each link. Finally, it imports the auth object from
+a Firebase client to check if a user is currently logged in. */
 
 import React, {useState} from 'react'
 import Link from 'next/link';

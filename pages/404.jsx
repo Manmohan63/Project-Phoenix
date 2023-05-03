@@ -1,3 +1,7 @@
+/* This code is defining a React component called `Error` that displays a custom 404 error page. It
+imports various modules from the Next.js framework, including `Head` for setting the page title,
+`Image` for displaying images, `Link` for creating links, and `useRouter` for accessing the router
+object. */
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'

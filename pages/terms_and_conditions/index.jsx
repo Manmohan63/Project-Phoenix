@@ -1,3 +1,8 @@
+/* This is a React component that renders a set of rules and guidelines for a Codeforces/CodeChef
+community. It uses the `Head` component from the `next/head` library to set the title of the page.
+The component returns a set of HTML elements that display the rules and guidelines in an unordered
+list format. The CSS classes are used to style the elements. Finally, the component is exported as
+the default export. */
 import React from 'react'
 import Head from 'next/head'
 

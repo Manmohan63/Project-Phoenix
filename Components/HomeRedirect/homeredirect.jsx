@@ -2,6 +2,15 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
+/**
+ * The Homeredirect function returns a grid of links to different pages with hover effects and
+ * descriptions for a competitive programming community website.
+ * @returns A component that renders four links with hover effects, each linking to a different page
+ * within the website. The links are displayed in a grid layout with two columns on larger screens and
+ * one column on smaller screens. The links have a common style defined by the `style` variable, which
+ * includes various CSS classes and styles. When the user hovers over a link, a description of the
+ * linked page is displayed
+ */
 const Homeredirect = () => {
     const [ishover1, sethover1] = useState(false);
     const [ishover2, sethover2] = useState(false);

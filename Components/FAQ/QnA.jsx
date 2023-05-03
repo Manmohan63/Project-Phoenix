@@ -1,3 +1,6 @@
+/* This is a React component that renders a question and answer section with an expandable/collapsible
+feature. It uses the useState hook to manage the state of whether the answer section is open or
+closed. It also uses the react-icons library to display arrow icons for the expand/collapse feature. */
 import React, { useState } from 'react'
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 

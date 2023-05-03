@@ -1,3 +1,7 @@
+/* This is a React component called `Footer` that renders a footer section for a website. It imports
+several icons from the `react-icons` library and a `Link` component from the `next/link` library.
+The component returns a `div` element with several child elements, including links to social media
+profiles, links to other pages on the website, and a copyright notice. */
 import React from 'react'
 import { SiYoutube } from 'react-icons/si'
 import { BsInstagram } from 'react-icons/bs'

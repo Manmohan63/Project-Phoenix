@@ -60,6 +60,10 @@ const Blogs = () => {
 }
 
 const Search = ({setsearched,name,setname, setsearchblogs}) => {
+  /**
+   * This function fetches blog entries of a user from Codeforces API and sets the state of the
+   * searched blogs.
+   */
   function fetchData(){
     fetch(`https://codeforces.com/api/user.blogEntries?handle=${name}`)
       .then(response => {
@@ -79,6 +83,10 @@ const Search = ({setsearched,name,setname, setsearchblogs}) => {
         }
       })
   }
+    /**
+     * This is a React function that handles form submission and input change, checking if a name is
+     * entered and setting a state accordingly.
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
         if(name==''){
@@ -94,9 +102,9 @@ const Search = ({setsearched,name,setname, setsearchblogs}) => {
     };
     return (
         <div className='flex items-end'>
-            <form onSubmit={handleSubmit} className='border-2 border-main rounded-md text-dark__blue mx-2 mt-2 flex items-center justify-between xl:w-[25vw] lg:w-[25vw] md:w-full sm:w-full'>
+            <form onSubmit={handleSubmit} className='border-2 border-main rounded-md text-dark__blue mx-2 mt-2 flex items-center justify-between xl:w-[28vw] lg:w-[28vw] md:w-full sm:w-full'>
                 <label className='my-1.5 mx-1 w-full'>
-                    <input type="text" className='p-1 w-full rounded-md h-[35px]' placeholder={`Search codeforces authors e.g. Um_nik`}
+                    <input type="text" className='p-1 w-full rounded-md h-[35px]' placeholder={`Search Codeforces Authors e.g. Um_nik`}
                         value={name} onChange={handleChange}
                     />
                 </label>
@@ -107,6 +115,10 @@ const Search = ({setsearched,name,setname, setsearchblogs}) => {
         </div>
     );
 }
+/* The above code is a React component that takes in a prop called `searchblogs` and displays a list
+of blogs based on the search results. It first displays the number of results found and then maps
+through the `searchblogs` array to display each blog's title and a link to the blog post on
+Codeforces. The component also applies some styling to the blog post container. */
 const Searchcontent = ({searchblogs}) => {
   return (
     <div>

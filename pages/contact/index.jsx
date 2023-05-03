@@ -1,3 +1,7 @@
+/* This code is a Next.js page that allows users to submit a contact form. It initializes Firebase
+using the Firebase SDK, creates a form using the react-hook-form library, and submits the form data
+to a Firestore database using the Firebase SDK. The page also includes some styling using Tailwind
+CSS and a page title using the Head component from Next.js. */
 // Step 1: Initialize Firebase
 import { initializeApp } from 'firebase/app';
 import Head from 'next/head'

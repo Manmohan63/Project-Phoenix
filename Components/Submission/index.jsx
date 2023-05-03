@@ -1,3 +1,7 @@
+/**
+ * This is a React component that fetches and displays a user's recent Codeforces submissions in a
+ * table format.
+ */
 import React,{useState, useEffect} from 'react'
 import { BsBoxArrowUpRight } from "react-icons/bs";
 

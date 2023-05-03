@@ -1,3 +1,9 @@
+/* This code is creating an image carousel component using Next.js and React. It imports the `Image`
+component from Next.js to display the images and the `Marquee` component from `react-fast-marquee`
+to create the scrolling effect. The `images` array contains the image URLs and alt text for each
+image. The `ImageCarousel` function returns a div containing the `Marquee` component with each image
+wrapped in a div with the `Image` component inside. It also includes a text overlay using a `p`
+element with a gradient background and border. */
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 

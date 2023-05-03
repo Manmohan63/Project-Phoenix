@@ -95,6 +95,10 @@ const Index = () => {
 }
 const Searchcontent = ({checked1,checked2,checked3,checked4,checked5,checked6}) => {
   const [events,setevents]= useState([]);
+  /**
+   * This function fetches data from an API and filters it based on certain conditions, then sets the
+   * filtered data to be displayed.
+   */
   function fetchData(){
     fetch(`https://kontests.net/api/v1/all`)
       .then(response => {
@@ -143,6 +147,12 @@ const Searchcontent = ({checked1,checked2,checked3,checked4,checked5,checked6}) 
         hour: "numeric",
         minute: "numeric",
     };
+  /* The above code is a React component that displays a list of data items with information about
+  scheduled coding contests. It shows the number of results found and a countdown timer for
+  automatic data refresh. Each item in the list displays the name of the contest, the scheduled
+  start and end times, the duration, and a link to the contest page. It also displays the logo of
+  the coding platform where the contest is being held. The component is responsive and adjusts its
+  layout based on the screen size. */
   return (
     <div>
       <div className='w-full flex items-center justify-between'>

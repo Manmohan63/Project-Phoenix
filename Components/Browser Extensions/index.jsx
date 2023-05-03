@@ -1,3 +1,6 @@
+/* The below code is a React component that displays a list of Chrome extensions related to competitive
+programming. It uses Next.js for server-side rendering and includes images, links, and descriptions
+for each extension. The component also includes a "Add More" button that links to a contact page. */
 import React from 'react'
 import Image from 'next/image';
 import { TiPlus } from "react-icons/ti";

@@ -1,9 +1,13 @@
+/* This is a React functional component that renders a page with three tabs (Blogs, YouTube, and
+Practice) that display different components based on which tab is selected. The component uses the
+useState hook to manage the state of which tab is currently open. The component also imports several
+other components from different files to display the content for each tab. */
 import React, { useState } from 'react'
 import Head from 'next/head'
-import Tools from '../../Components/tools/index';
+import Tools from '../../Components/Tools/index';
 import Platforms from '../../Components/Platforms/practice';
 import YTvideos from '../../Components/YT videos/index';
-import Blogs from '../../Components/Carousel/Blogs/blogs';
+import Blogs from '../../Components/Blogs/blogs';
 
 const Index = () => {
   const [open1, setopen1] = useState(true);
