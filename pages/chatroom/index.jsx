@@ -1,3 +1,11 @@
+/**
+ * The function exports a chatroom component that allows users to send and receive messages using
+ * Firebase authentication and Firestore database.
+ * @returns The code exports the `SignOut` component and the `Chat` component as the default export.
+ * The `Chat` component renders either the `ChatRoom` component or a message requesting the user to
+ * login if there is no authenticated user. The `ChatRoom` component renders the chat messages and a
+ * form to send new messages. The `ChatMessage` component renders individual chat messages.
+ */
 import React, { useEffect,useRef, useState } from "react";
 import Head from 'next/head'
 import Link from 'next/link'
@@ -82,7 +90,6 @@ function ChatRoom() {
 
 
     e.preventDefault();
-    //const user=auth.currentUser;
     const { uid } = auth.currentUser;
     
     const {displayName}=auth.currentUser;
@@ -98,15 +105,15 @@ function ChatRoom() {
   };
 
   return (
-    <>
-      <main className= "flex-1 overflow-y-auto px-4 py-6 min-h-screen backdrop-blur-sm">
+    <div className="flex flex-col w-full">
+      <main className= "flex-1 px-4 py-6 min-h-screen backdrop-blur-sm">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
 
-      <form onSubmit={sendMessage} className="flex items-center py-2 px-4">
+      <form onSubmit={sendMessage} className="flex items-center py-2 px-2 border-2 m-2 rounded-md">
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
@@ -115,9 +122,9 @@ function ChatRoom() {
           maxLength={1000}
         />
 
-        <button type="submit" disabled={!formValue}><RiSendPlaneFill size={40} className="rounded-md p-1.5 border-2 hover:bg-main hover:text-dark__blue"/></button>
+        <button type="submit" disabled={!formValue}><RiSendPlaneFill size={40} className="rounded-md p-1.5 border-2 hover:bg-main hover:text-dark__blue" /></button>
       </form>
-    </>
+    </div>
   );
 }
 

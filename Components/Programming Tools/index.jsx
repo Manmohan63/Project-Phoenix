@@ -1,3 +1,8 @@
+/* This is a React component that renders a grid of cards containing information about various
+competitive programming tools and websites. It uses the `Image` component from the `next/image`
+library to display images, and imports icons from the `react-icons` library. It also uses the `Link`
+component from `next/link` to create a link to another page. The data for the cards is stored in an
+array of objects, and is mapped over to create the cards dynamically. */
 import React from 'react'
 import Image from 'next/image';
 import { TiPlus } from "react-icons/ti";

@@ -1,3 +1,9 @@
+/**
+ * The function returns a React component that displays information about a community for competitive
+ * programming enthusiasts.
+ * @returns The Index component is being returned, which contains a Head component for setting the
+ * title of the page and a div containing information about the CP Unofficial community.
+ */
 import React from 'react'
 import Head from 'next/head'
 

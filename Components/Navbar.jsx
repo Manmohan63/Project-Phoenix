@@ -1,3 +1,8 @@
+/* The above code is a React component that creates a navbar for a web application. It imports various
+modules from Firebase, Next.js, and other libraries to implement features such as authentication,
+search functionality, and theme switching. The navbar is responsive and includes a hamburger menu
+for smaller screens. It also displays the user's profile and a sign-out button if the user is
+authenticated. */
 import React from 'react'
 import { initializeApp } from "firebase/app";
 import { Divide as Hamburger } from 'hamburger-react'
@@ -70,14 +75,15 @@ const Navbar = ({theme, choosetheme}) => {
             <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
           {/* <Search/> */}
             
-           <section> 
+           <section onClick={()=> setOpen(false)}> 
             <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
-            {user ? <SignOut theme={theme} /> :
+              {user ? <div className='flex flex-col'><Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link><SignOut theme={theme} /></div> :
             <div className="flex flex-col"> 
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
             <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignIn</Link></div>}</section>
             
-            <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() => choosetheme(!theme)}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
+            <button className={'border-2 m-2 p-1.5 rounded-full ' + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot"}`} onClick={() =>{
+              setOpen(false); choosetheme(!theme);}}>{!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           </div>
         </div>
 
@@ -89,8 +95,8 @@ const Navbar = ({theme, choosetheme}) => {
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-main hover:bg-light_theme_ot border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
-          <Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link>
-          <section>{user ? <SignOut theme={theme} /> : 
+          
+          <section>{user ? <div className='flex'><Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link><SignOut theme={theme} /></div> : 
           <div className='flex'> <Link href='/signup' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign Up</Link>
           <Link href='/signin' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign In</Link></div>}</section>
         </div>
@@ -143,7 +149,7 @@ export function SignIn({theme}) {
       .catch((error) => {
         console.log(error);
         //alert('email or password not correct');
-        setErrorp('email or password not correct')
+        setErrorp('Email or Password not correct')
         // ..
       });
   }

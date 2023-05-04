@@ -2,13 +2,22 @@ import React, { useState } from 'react'
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-const Homeredirect = () => {
+/**
+ * The Homeredirect function returns a grid of links to different pages with hover effects and
+ * descriptions for a competitive programming community website.
+ * @returns A component that renders four links with hover effects, each linking to a different page
+ * within the website. The links are displayed in a grid layout with two columns on larger screens and
+ * one column on smaller screens. The links have a common style defined by the `style` variable, which
+ * includes various CSS classes and styles. When the user hovers over a link, a description of the
+ * linked page is displayed
+ */
+const Homeredirect = ({theme}) => {
     const [ishover1, sethover1] = useState(false);
     const [ishover2, sethover2] = useState(false);
     const [ishover3, sethover3] = useState(false);
     const [ishover4, sethover4] = useState(false);
     let style = `m-2 p-4 rounded-md backdrop-blur-sm 
-          hover:box-shadow flex flex-col items-center justify-around xl:text-5xl lg:text-5xl md:text-3xl lg:h-[25vw] xl:h-[25vw] bg-gradient-to-t from-[#071fb4] to-[#dbad69] text-dark__blue border-4 border-dark__blue`;
+          hover:box-shadow flex flex-col items-center justify-around xl:text-5xl lg:text-5xl md:text-3xl lg:h-[25vw] xl:h-[25vw] text-dark__blue border-4 border-dark__blue  ${theme ? "bg-gradient-to-t from-[#071fb4]" : "bg-gradient-to-t from-[#ffffff]"} to-[#e2a343]`;
 
     return (
         <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'>

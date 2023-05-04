@@ -1,3 +1,7 @@
+/* This is a React component that displays a list of frequently asked questions (FAQs) and their
+corresponding answers. It imports the React library and a custom QnA component, defines an array of
+questions and answers, and maps over the array to render each question and answer using the QnA
+component. The component also includes some styling using CSS classes. */
 import React from "react";
 import QnA from './QnA';
 

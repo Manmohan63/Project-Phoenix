@@ -1,3 +1,9 @@
+/* This code is creating an image carousel component using Next.js and React. It imports the `Image`
+component from Next.js to display the images and the `Marquee` component from `react-fast-marquee`
+to create the scrolling effect. The `images` array contains the image URLs and alt text for each
+image. The `ImageCarousel` function returns a div containing the `Marquee` component with each image
+wrapped in a div with the `Image` component inside. It also includes a text overlay using a `p`
+element with a gradient background and border. */
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
@@ -36,7 +42,7 @@ const images = [
     },
 ];
 
-export default function ImageCarousel() {
+export default function ImageCarousel({ theme }) {
     return (
         <div>
             <div className="flex w-full relative">
@@ -59,10 +65,10 @@ export default function ImageCarousel() {
                             />
                         </div>
                     ))}
-                    </Marquee>
-                    <div className="xl:text-6xl lg:text-5xl md:text-2xl sm:text-md z-10 text-center absolute inset-0 flex justify-start items-center">
-                    <p className='p-8 h-[30vw] w-[25vw] flex justify-center items-center bg-gradient-to-t from-[#071fb4] to-[#dbad69] text-dark__blue border-x-4 border-t-4 border-b-2 border-dark__blue'> Welcome To CP Unofficial</p>
-                    </div>
+                </Marquee>
+                <div className="xl:text-6xl lg:text-5xl md:text-2xl sm:text-md z-10 text-center absolute inset-0 flex justify-start items-center">
+                    <p className={`p-8 h-[30vw] w-[25vw] flex justify-center items-center ${theme ? "bg-gradient-to-t from-[#071fb4]" : "bg-gradient-to-t from-[#ffffff]"} to-[#e2a343] ${theme ? "text-dark__blue" : "text-[#04192f]"} border-x-4 border-t-4 border-b-2 ${theme ? "border-dark__blue" : "border-[#04192f]"}`}> Welcome To CP Unofficial</p>
+                </div>
             </div>
         </div>
     );

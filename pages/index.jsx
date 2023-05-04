@@ -1,13 +1,16 @@
+/* This is a React functional component that renders the home page of a website for a community of
+competitive programming enthusiasts. It imports several components from other files, including a
+carousel, a home redirect, and a FAQ section. It also uses the `Head` component from Next.js to set
+the title of the page. The component returns JSX code that defines the layout and content of the
+home page. */
 import React, { useState} from 'react'
 import Carousel from '../Components/Carousel/carousel'
-import Monthly from '../Components/Monthly Scoreboard/monthly';
-import Weekly from '../Components/Weekly Scoreboard/weekly';
 import Homeredirect from '../Components/HomeRedirect/homeredirect';
 import Faq from '../Components/FAQ/FAQ';
 import Link from 'next/link';
 import Head from 'next/head'
 
-const Index = () => {
+const Index = ({theme}) => {
   return (
     <>
       <Head>
@@ -15,7 +18,7 @@ const Index = () => {
       </Head>
     <div className='flex items-center flex-col backdrop-blur-sm'>
       <div className="flex flex-col items-center justify-start w-full">
-        <Carousel />
+        <Carousel theme={theme}/>
       </div>
       <div className='flex justify-around items-around p-2.5 pb-12'>
         <div className="w-4/5">
@@ -24,11 +27,7 @@ const Index = () => {
             At CP Unofficial, we believe that programming is not just a hobby, but a way of life. Our goal is to create a community where everyone can learn from each other, grow together, and have fun while doing it. Whether you are a beginner just starting out or a seasoned pro, we welcome you to join us on this journey. <Link href='/about' className='underline'>Read more</Link></p>
         </div>
       </div>
-      <Homeredirect />
-      {/* <div className='flex w-full justify-around'>
-      <Monthly />
-      <Weekly />
-      </div> */}
+      <Homeredirect theme={theme} />
       <Faq/>
     </div>
     </>

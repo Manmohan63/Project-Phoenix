@@ -1,3 +1,9 @@
+/* The above code is a React component that renders a sign-up form for a website. It uses Firebase
+authentication and Firestore to store user data. The form includes fields for the user's name,
+email, password, date of birth, city, state, college name, and interests. It also includes fields
+for the user's Codeforces and Leetcode handles, as well as a unique user ID. The component includes
+form validation to ensure that the user ID and email are not already taken, and that the password
+and confirm password fields match. It also includes a toggle to show/hide the password and confirm */
 import { useState,useRef } from 'react';
 import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -75,7 +81,7 @@ const SignupForm = ({theme}) => {
     state=state.trim();
     collegename=collegename.trim();
     lastname=lastname.trim();
-    str = firstname+" "+lastname;
+    str = (firstname+" "+lastname);
     setName(str);
     if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');
@@ -132,8 +138,6 @@ const SignupForm = ({theme}) => {
     window.scrollTo({
       top: 0, 
       behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
     });
   }
   const [redirect, setredirect] = useState(false);

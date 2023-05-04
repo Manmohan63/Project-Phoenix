@@ -1,3 +1,12 @@
+/**
+ * This is the main App component that sets the theme and renders the Layout, Navbar, Component, and
+ * Footer components.
+ * @returns The code is returning a React component that renders a layout with a navbar, a footer, and
+ * a main content component. The layout has a background image and a dynamic class that changes based
+ * on the theme state. The theme state is managed using the useState hook. The choosetheme function is
+ * used to update the theme state. The Component and pageProps are passed as props to the main content
+ * component
+ */
 import '@/styles/globals.css'
 import Layout from '@/Components/Layout'
 import Navbar from '@/../Components/Navbar';

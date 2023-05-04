@@ -1,3 +1,8 @@
+/**
+ * This is a React component that displays user information, including their Codeforces and Leetcode
+ * IDs, and allows the user to toggle between viewing their Codeforces submissions, rating changes, and
+ * Leetcode submissions.
+ */
 import React, { useState, useEffect } from 'react'
 import Submission from '../Submission/index'
 import Rating from '../Rating/index'
@@ -61,22 +66,23 @@ const Maincontent = ({user}) => {
     },[counter]);
   return (
   <>
-    <div className='border-4 rounded-md m-1 flex justify-between items-center p-10'>
+    <div className='border-4 rounded-md m-1 flex justify-between items-center p-10 sm:flex-col-reverse'>
       <div className="">
-      <p className="text-4xl font-bold">{user.name}</p>
-      <p className="text-base"><a href={`mailto:${user.email}`} className='hover:underline'>{user.email}</a>, {user.city}, India</p>
-      <p className="text-base">{user.collegename}</p>
-      <p>Codeforces ID: <a href={`https://codeforces.com/profile/${user.codeforcesId}`} className='hover:underline'>{user.codeforcesId}</a></p>
-      <p>Leetcode ID: <a href={`https://leetcode.com/${user.leetcodeId}/`} className='hover:underline'>{user.leetcodeId}</a></p>
-      <p>Current CF Rank: {data[0].rating}, {data[0].rank} (max. {data[0].maxRank}, {data[0].maxRating})</p>
-      <p>CF Contributions: {data[0].contribution}</p>
-      <p>Friend of: {data[0].friendOfCount} users</p>
-      <p>Interested In: {user.interestedin}</p>
+      <p className="text-4xl font-bold sm:text-2xl">{user.name}</p>
+      <p className="text-xl sm:text-lg font-bold">{user.collegename}</p>
+      <p className="text-base"><a href={`mailto:${user.email}`} className='hover:underline'>{user.email}</a></p>
+      <li>{user.city}, India</li>
+      <li>Codeforces ID: <a href={`https://codeforces.com/profile/${user.codeforcesId}`} className='hover:underline'>{user.codeforcesId}</a></li>
+      <li>Leetcode ID: <a href={`https://leetcode.com/${user.leetcodeId}/`} className='hover:underline'>{user.leetcodeId}</a></li>
+      <li>Current CF Rank: {data[0].rating}, {data[0].rank} (max. {data[0].maxRank}, {data[0].maxRating})</li>
+      <li>CF Contributions: {data[0].contribution}</li>
+      <li>Friend of: {data[0].friendOfCount} users</li>
+          <li>Interested In: {user.interestedin} </li>
       </div>
       <Image
             src={data[0].titlePhoto}
             alt="Phoenix"
-            className={"w-auto h-[15vw] border-4 border-main rounded-md"}
+            className={"w-auto h-[15vw] border-4 border-main rounded-md sm:h-[30vw]"}
             width={1500}
             height={1500}
             layout="filled"
@@ -84,17 +90,17 @@ const Maincontent = ({user}) => {
     </div>
     <div className=''>
         <div className='w-full flex items-center border-y-2'>
-            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open1 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => {
+            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open1 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(true);
               setopen2(false);
               setopen3(false);
             }}>CF Submissions</div>
-            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open2 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => {
+            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open2 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(false);
               setopen2(true);
               setopen3(false);
             }}>CF Rating Changes</div>
-            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open3 ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => {
+            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open3 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(false);
               setopen2(false);
               setopen3(true);

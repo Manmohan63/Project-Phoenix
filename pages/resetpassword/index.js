@@ -1,3 +1,9 @@
+/**
+ * This is a Next.js page component for handling password reset and forgot password functionality using
+ * Firebase authentication.
+ * @returns A React component for handling password reset and forgot password functionality, along with
+ * a server-side props function for retrieving the oobCode query parameter.
+ */
 import { getAuth, sendPasswordResetEmail, confirmPasswordReset } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
