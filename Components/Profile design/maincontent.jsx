@@ -90,7 +90,7 @@ const Maincontent = ({user}) => {
     </div>
     <div className=''>
         <div className='w-full flex items-center border-y-2'>
-            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open1 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
+            <div className={` m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open1 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(true);
               setopen2(false);
               setopen3(false);
@@ -100,7 +100,7 @@ const Maincontent = ({user}) => {
               setopen2(true);
               setopen3(false);
             }}>CF Rating Changes</div>
-            <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open3 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
+            <div className={` m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open3 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(false);
               setopen2(false);
               setopen3(true);
