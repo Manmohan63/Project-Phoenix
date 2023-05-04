@@ -81,7 +81,7 @@ const SignupForm = ({theme}) => {
     state=state.trim();
     collegename=collegename.trim();
     lastname=lastname.trim();
-    str = firstname+" "+lastname;
+    str = (firstname+" "+lastname);
     setName(str);
     if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');
