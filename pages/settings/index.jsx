@@ -37,7 +37,19 @@ export default function ProfilePage({ theme }) {
   };
   let style =
     "text__black w-full p-1.5 my-1.5 bg-transparent border-4 border-dark__blue rounded-md focus:border-main ";
-  return (
+    if (!user) {
+      return (
+        <>
+          <Head>
+            <title>Settings | CP Unofficial</title>
+          </Head>
+        <div className="App min-h-screen">
+          <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{<Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">Please sign in to view settings. Thank You!</Link>}</section>
+        </div>
+        </>
+      );
+    }
+    return (
     <>
       <Head>
         <title>Settings | CP Unofficial</title>
