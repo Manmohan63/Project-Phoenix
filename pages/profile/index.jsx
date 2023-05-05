@@ -11,7 +11,7 @@ import Head from 'next/head'
 import { app, db, auth }  from '../../firebaseclient';
 import Maincontent from '../../Components/Profile design/maincontent';
 
-let user_data;
+let user_data=null;
 const Profile = () => {
   const [user, setUser] = useState(null);
 
