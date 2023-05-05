@@ -35,7 +35,8 @@ const db = getFirestore(app);
 const SignupForm = ({theme}) => {
   let [codeforcesId, setCodeforcesId] = useState('');
   let [leetcodeId, setLeetcodeId] = useState('');
-  let [name, setName] = useState('');
+  // let [name, setName] = useState('');
+  let name;
   let [firstname, setfirstName] = useState('');
   let [lastname, setlastName] = useState('');
   let [email, setEmail] = useState('');
@@ -82,13 +83,17 @@ const SignupForm = ({theme}) => {
     collegename=collegename.trim();
     lastname=lastname.trim();
     str = (firstname+" "+lastname);
-    setName(`${firstname} ${lastname}`);
+    console.log(str);
 
-    //console.log(name);
-    if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
-      alert('Please fill out all required fields.');
-      return;
-    }
+    name=str;
+
+   
+    console.log(name);
+
+    // if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
+    //   alert('Please fill out all required fields.');
+    //   return;
+    // }
 
     try {
 
