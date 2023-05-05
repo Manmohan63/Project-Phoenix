@@ -72,11 +72,11 @@ const Navbar = ({theme, choosetheme}) => {
         </div>
         {isOpen && <div className={`fixed top-[64px] right-0 h-auto z-10 border-x-2 border-b-2 rounded-b-lg md:hidden lg:hidden xl:hidden ${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}` }>
           <div className={`flex flex-col justify-between items-center px-2`}>
-            <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Offline!</div></Offline>
+            <Offline><div className='bg-main text-dark__blue p-2 rounded-md md:w-full sm:w-full'>You&apos;re Internet Connection is weak!</div></Offline>
           {/* <Search/> */}
             
            <section onClick={()=> setOpen(false)}> 
-            <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
+              <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Internet Connection is weak!</div></Offline>
               {user ? <div className='flex flex-col'><Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link><SignOut theme={theme} /></div> :
             <div className="flex flex-col"> 
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
@@ -129,47 +129,6 @@ const Search = () => {
   );
 
 }
-
-
-export function SignIn({theme}) {
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorp, setErrorp] = useState('')
-
-  const router = useRouter();
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log("logged In");
-        router.push("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        //alert('email or password not correct');
-        setErrorp('Email or Password not correct')
-        // ..
-      });
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
-        {errorp && <div>{errorp}</div>}
-      </label>
-      <button type="submit">Sign In</button>
-    </form>
-  );
-}
-
 
 function SignOut({theme}) {
   return (

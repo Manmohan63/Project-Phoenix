@@ -103,7 +103,7 @@ Chrome extension that makes Codeforces better: supports multiple ratings graph.`
           hover:box-shadow  flex flex-col items-center justify-around lg:h-[25vw] xl:h-[25vw]" title={d.name}>
             <h1 className='font-bold text-2xl mb-2 md:text-xl sm:text-md'>{d.name}</h1>
             <div className='flex items-start justify-around'>
-              <p className='text-lg lg:text-base sm:text-sm'>{d.desc}</p>
+              <p className='text-xl lg:text-base sm:text-sm'>{d.desc}</p>
               <Image
                 src={d.image_address}
                 alt={d.name}

@@ -23,7 +23,7 @@ export default function SignIn({ theme }) {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log("logged In");
-        router.push("/");
+        router.push("/profile");
       })
       .catch((error) => {
         console.log(error);

@@ -10,23 +10,22 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebaseclient";
 import Link from "next/link";
 import Head from "next/head";
+import { user_data } from '../profile/index'
 
 export default function ProfilePage({ theme }) {
   const user = auth.currentUser;
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [dob, setDob] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [interestedin, setInterestedin] = useState("");
-  const [codeforcesId, setCodeforcesId] = useState("");
-  const [leetcodeId, setLeetcodeId] = useState("");
+  const [name, setName] = useState(user_data.name);
+  const [state, setState] = useState(user_data.state);
+  const [city, setCity] = useState(user_data.city);
+  const [interestedin, setInterestedin] = useState(user_data.interestedin);
+  const [codeforcesId, setCodeforcesId] = useState(user_data.codeforcesId);
+  const [leetcodeId, setLeetcodeId] = useState(user_data.leetcodeId);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     await updateUser(user.uid, {
       name,
-      dob,
       state,
       city,
       interestedin,
@@ -71,15 +70,6 @@ export default function ProfilePage({ theme }) {
                 type="text"
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-              />
-            </label>
-            <label>
-              Date of Birth
-              <input
-                className={style}
-                type="date"
-                value={dob}
-                onChange={(event) => setDob(event.target.value)}
               />
             </label>
             <div className="flex w-full sm:w-full md:w-full">

@@ -4,7 +4,7 @@ email, password, date of birth, city, state, college name, and interests. It als
 for the user's Codeforces and Leetcode handles, as well as a unique user ID. The component includes
 form validation to ensure that the user ID and email are not already taken, and that the password
 and confirm password fields match. It also includes a toggle to show/hide the password and confirm */
-import { useState,useRef } from 'react';
+import { useState, useEffect ,useRef } from 'react';
 import { getAuth, createUserWithEmailAndPassword,updateProfile } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
@@ -55,7 +55,9 @@ const SignupForm = ({theme}) => {
   let [showPassword, setShowPassword] = useState(false);
   let [showconfirmPassword, setShowconfirmPassword] = useState(false);
   const router=useRouter();
-
+  const App = () => {
+      setTimeout(() => router.push('/profile'), 4000);
+  };
   var str;
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,10 +92,10 @@ const SignupForm = ({theme}) => {
    
     console.log(name);
 
-    // if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
-    //   alert('Please fill out all required fields.');
-    //   return;
-    // }
+    if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
+      alert('Please fill out all required fields.');
+      return;
+    }
 
     try {
 
@@ -115,28 +117,26 @@ const SignupForm = ({theme}) => {
         interestedin,
         userId,
       });
-       toast.success('Successfully signed up!');
-       router.push('/');
+      setCodeforcesId('');
+      setLeetcodeId('');
+      setfirstName('');
+      setlastName('');
+      setEmail('');
+      setPassword('');
+      setDob('');
+      setCity('');
+      setGender('');
+      setState('');
+      setInterestedin('');
+      setUserId('');
+      setConfirmpassword('');
 
+      scrollToTop();
+      toast.success('Successfully signed up!');
+      App();
     } catch (error) {
       alert(error.message);
-    }
-   
-        setCodeforcesId('');
-        setLeetcodeId('');
-        setfirstName('');
-        setlastName('');
-        setEmail('');
-        setPassword('');
-        setDob('');
-        setCity('');
-        setGender('');
-        setState('');
-        setCollegename('');
-        setInterestedin('');
-        setUserId('');
-        setConfirmpassword('');
-        
+    }        
   };
   const handlegender=(e)=>{
     setGender(e.target.value)
@@ -261,7 +261,7 @@ const SignupForm = ({theme}) => {
 
             <p>Already a User? <Link href='/signin' className='hover:underline'>Sign In</Link></p>
             {errormessage && <div className='text-dark__blue bg-main p-1.5 rounded-md'>{errormessage}</div>}
-          <button type="submit" onClick={scrollToTop} className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
+          <button type="submit" className={'font-bold border-2 border-main border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md ' + `${theme ? "hover:text-dark__blue hover:bg-[#d49f50] border-dark__blue rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>Sign up &nbsp;<BsArrowRightCircle className='inline' /></button>
           <ToastContainer/>
           
         </form>

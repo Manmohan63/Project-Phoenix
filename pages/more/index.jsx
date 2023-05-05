@@ -21,7 +21,7 @@ const More = () => {
             <div className=''>
                 <div className='w-full flex items-center border-b-2'>
                     <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${open ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => setopen(true)}>Tools</div>
-                    <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${!open ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => setopen(false)}>Broswser Extensions</div>
+                    <div className={`border-x-[1px] m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm ${!open ? ("text-dark__blue bg-main sm:text-base") : "m-0"}`} onClick={() => setopen(false)}>Browser Extensions</div>
                 </div>
                 <div className=''>
                     {open && <Tools />}
