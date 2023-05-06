@@ -10,20 +10,25 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/firebaseclient";
 import Link from "next/link";
 import Head from "next/head";
-import { user_data } from '../profile/index'
+// import { user_data } from '../profile/index'
 
 export default function ProfilePage({ theme }) {
   const user = auth.currentUser;
-  const router = useRouter();
-  const [name, setName] = useState(user_data.name);
-  const [state, setState] = useState(user_data.state);
-  const [city, setCity] = useState(user_data.city);
-  const [interestedin, setInterestedin] = useState(user_data.interestedin);
-  const [codeforcesId, setCodeforcesId] = useState(user_data.codeforcesId);
-  const [leetcodeId, setLeetcodeId] = useState(user_data.leetcodeId);
+  const router = useRouter("");
+  const [name, setName] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [interestedin, setInterestedin] = useState("");
+  const [codeforcesId, setCodeforcesId] = useState("");
+  const [leetcodeId, setLeetcodeId] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!codeforcesId || !name  || !city || !leetcodeId || !state || !interestedin) {
+      alert('Please fill out all required fields.');
+      return;
+    }
+    
     await updateUser(user.uid, {
       name,
       state,
@@ -36,18 +41,18 @@ export default function ProfilePage({ theme }) {
   };
   let style =
     "text__black w-full p-1.5 my-1.5 bg-transparent border-4 border-dark__blue rounded-md focus:border-main ";
-    if (!user) {
-      return (
-        <>
-          <Head>
-            <title>Settings | CP Unofficial</title>
-          </Head>
-        <div className="App min-h-screen">
-          <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{<Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">Please sign in to view settings. Thank You!</Link>}</section>
-        </div>
-        </>
-      );
-    }
+    // if (!user) {
+    //   return (
+    //     <>
+    //       <Head>
+    //         <title>Settings | CP Unofficial</title>
+    //       </Head>
+    //     <div className="App min-h-screen">
+    //       <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{<Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">Please sign in to view settings. Thank You!</Link>}</section>
+    //     </div>
+    //     </>
+    //   );
+    // }
     return (
     <>
       <Head>

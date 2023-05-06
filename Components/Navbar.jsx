@@ -77,7 +77,7 @@ const Navbar = ({theme, choosetheme}) => {
             
            <section onClick={()=> setOpen(false)}> 
               <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Internet Connection is weak!</div></Offline>
-              {user ? <div className='flex flex-col'><Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link><SignOut theme={theme} /></div> :
+              {user ? <div className='flex flex-col'><SignOut theme={theme} /></div> :
             <div className="flex flex-col"> 
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
             <Link href='/signin' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignIn</Link></div>}</section>
@@ -89,14 +89,14 @@ const Navbar = ({theme, choosetheme}) => {
 
         }
         <div className={`flex justify-between items-center sm:hidden`}>
-          <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Offline!</div></Offline>
+          <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Internet Connection is weak!</div></Offline>
           {/* <Search/> */}
           <button 
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-main hover:bg-light_theme_ot border-blue rounded-full"}`}
           onClick={()=> choosetheme(!theme)}> 
           {!theme ? <RiMoonFill size={25} /> : <BsFillSunFill size={25} />}</button>
           
-          <section>{user ? <div className='flex'><Link href='/profile' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Profile</Link><SignOut theme={theme} /></div> : 
+          <section>{user ? <div className='flex'><SignOut theme={theme} /></div> : 
           <div className='flex'> <Link href='/signup' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign Up</Link>
           <Link href='/signin' className={style__button + `${theme ? "bg-bg_blue_phoenix " : " bg-light_theme_ot  border-bg-light_theme_ot"}`} >Sign In</Link></div>}</section>
         </div>
