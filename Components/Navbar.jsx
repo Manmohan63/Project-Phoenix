@@ -38,7 +38,7 @@ const firebaseApp = initializeApp({
 });
 
 
-const style__button = "border-2 m-2 md:text-base p-1.5 md:px-1.5 md:py-0 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
+const style__button = "  hover:text-dark__blue hover:bg-main border-2 m-2 md:text-base p-1.5 md:px-1.5 md:py-0 rounded-md flex justify-around items-center font-bold sm:border-0 sm:rounded-none sm:w-full sm:m-0 sm:p-2.5 ";
 
 const Navbar = ({theme, choosetheme}) => {
   const [user] = useAuthState(auth);
@@ -76,7 +76,7 @@ const Navbar = ({theme, choosetheme}) => {
           {/* <Search/> */}
             
            <section onClick={()=> setOpen(false)}> 
-              <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Internet Connection is weak!</div></Offline>
+              <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>Your Internet Connection is weak!</div></Offline>
               {user ? <div className='flex flex-col'><SignOut theme={theme} /></div> :
             <div className="flex flex-col"> 
             <Link href='/signup' className={style__button + `${theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-light_theme_bg hover:bg-light_theme_ot border-bg-light_theme_ot rounded-full"}`}>SignUp</Link>
@@ -89,7 +89,7 @@ const Navbar = ({theme, choosetheme}) => {
 
         }
         <div className={`flex justify-between items-center sm:hidden`}>
-          <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>You&apos;re Internet Connection is weak!</div></Offline>
+          <Offline><div className='bg-main text-dark__blue p-2 rounded-md'>Your Internet Connection is weak!</div></Offline>
           {/* <Search/> */}
           <button 
             className={'border-2 m-2 p-1.5 ' + `${!theme ? "hover:text-bg_blue_phoenix hover:bg-main border-main rounded-full" : "hover:text-main hover:bg-light_theme_ot border-blue rounded-full"}`}
