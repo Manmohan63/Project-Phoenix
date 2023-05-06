@@ -36,7 +36,7 @@ const Profile = () => {
           <title>Profile | CP Unofficial</title>
         </Head>
       <div className="App min-h-screen">
-        <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{<Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">Please sign up to view your profile. Thank You!</Link>}</section>
+        <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{<Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">Please sign up/sign in to view your profile. Thank You!</Link>}</section>
       </div>
       </>
     );

@@ -7,7 +7,7 @@ a Firebase client to check if a user is currently logged in. */
 import React, {useState} from 'react'
 import Link from 'next/link';
 import { IoIosHome } from 'react-icons/io'
-import { BsFillChatRightFill } from 'react-icons/bs'
+import { BsFillChatRightFill,BsPersonFill } from 'react-icons/bs'
 import { FaCalendarAlt } from 'react-icons/fa'
 import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 import { FiMoreHorizontal } from 'react-icons/fi'
@@ -43,6 +43,21 @@ const Sidebar = () => {
             <IoIosHome size={icon__size} />
           </div>
           <div className={text__style}>Home</div>
+        </div>
+      </Link>
+      <Link href="/profile">
+        <div className={sideicons__styles + `${active6?"text-dark__blue bg-main":""}`} title={"Settings"} onClick={()=>{
+          setActive1(false);
+          setActive2(false);
+          setActive3(false);
+          setActive4(false);
+          setActive5(false);
+          setActive6(true);
+        }}>
+          <div>
+            <BsPersonFill size={icon__size}/>
+          </div>
+          <div className={text__style}>Profile</div>
         </div>
       </Link>
        <Link href="/chatroom">
@@ -106,21 +121,7 @@ const Sidebar = () => {
           <div className={text__style}>More</div>
         </div>
       </Link>
-      <Link href="/settings">
-        <div className={sideicons__styles + `${active6?"text-dark__blue bg-main":""}`} title={"Settings"} onClick={()=>{
-          setActive1(false);
-          setActive2(false);
-          setActive3(false);
-          setActive4(false);
-          setActive5(false);
-          setActive6(true);
-        }}>
-          <div>
-            <MdSettings size={icon__size}/>
-          </div>
-          <div className={text__style}>settings</div>
-        </div>
-      </Link>
+      
     </div>
   )
 }
