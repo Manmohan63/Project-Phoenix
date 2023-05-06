@@ -12,7 +12,7 @@ import { app, db, auth }  from '../../firebaseclient';
 import Maincontent from '../../Components/Profile design/maincontent';
 
 let user_data=null;
-const Profile = () => {
+const Profile = ({theme}) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const Profile = () => {
           <title>Profile | CP Unofficial</title>
         </Head>
     <div className='backdrop-blur-sm min-h-screen'>
-      <Maincontent user={user}/>
+      <Maincontent user={user} theme={theme}/>
     </div>
     </>
   );

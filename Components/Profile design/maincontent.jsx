@@ -8,8 +8,9 @@ import Submission from '../Submission/index'
 import Rating from '../Rating/index'
 import Leetcode_data from '../Leetcode Data/leetcode_data'
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Maincontent = ({user}) => {
+const Maincontent = ({user,theme}) => {
   const [open1, setopen1] = useState(true);
   const [open2, setopen2] = useState(false);
   const [open3, setopen3] = useState(false);
@@ -79,6 +80,8 @@ const Maincontent = ({user}) => {
       <li>Friend of: {data[0].friendOfCount} users</li>
           <li>Interested In: {user.interestedin} </li>
       </div>
+      <div className='flex flex-col items-center'>
+
       <Image
             src={data[0].titlePhoto}
             alt="Phoenix"
@@ -87,6 +90,8 @@ const Maincontent = ({user}) => {
             height={1500}
             layout="filled"
           />
+          <Link href="/updateprofile" className=' m-2 font-bold border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Update Profile</Link>
+          </div>
     </div>
     <div className=''>
         <div className='w-full flex items-center border-y-2'>
