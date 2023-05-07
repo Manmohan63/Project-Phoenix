@@ -77,7 +77,7 @@ export default function ProfilePage({ theme }) {
                 onChange={(event) => setName(event.target.value)}
               />
             </label>
-            <div className="flex w-full sm:w-full md:w-full">
+            <div className="flex sm:flex-col w-full sm:w-full md:w-full">
               <div className="flex flex-col w-full">
                 <label>CodeforcesId</label>
                 <input
@@ -97,7 +97,7 @@ export default function ProfilePage({ theme }) {
                 />
               </div>
             </div>
-            <div className="flex w-full sm:w-full md:w-full">
+            <div className="flex sm:flex-col w-full sm:w-full md:w-full">
               <div className="flex flex-col w-full">
                 <label>State</label>
                 <input
