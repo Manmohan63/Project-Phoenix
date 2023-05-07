@@ -24,22 +24,17 @@ import {
 } from "firebase/firestore";
 
 import { getAuth, GoogleAuthProvider, signInWithPopup,onAuthStateChanged } from "firebase/auth";
-//import { getAuth } from "firebase/auth";
+
 import { useAuthState } from "react-firebase-hooks/auth";
-//import { useCollectionData } from 'react-firebase-hooks/firestore';
+
 import { app, db, auth } from '../../firebaseclient';
 import {RiSendPlaneFill} from 'react-icons/ri';
 
-const scrolltobottom = () =>{
-    window.scrollTo({
-      top: 5000000, 
-      behavior: 'smooth'
-    });
-}
+
 
 const Chat = () => {
   const [user] = useAuthState(auth);
-  scrolltobottom();
+  
   return (
     <>
       <Head>
