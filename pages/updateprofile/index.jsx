@@ -56,7 +56,7 @@ export default function ProfilePage({ theme }) {
     return (
     <>
       <Head>
-        <title>Settings | CP Unofficial</title>
+        <title>Update Profile | CP Unofficial</title>
       </Head>
 
       <div className="w-full p-4 h-screen justify-center items-center flex flex-col backdrop-blur-sm">
