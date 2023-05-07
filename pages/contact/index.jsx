@@ -4,6 +4,8 @@ to a Firestore database using the Firebase SDK. The page also includes some styl
 CSS and a page title using the Head component from Next.js. */
 // Step 1: Initialize Firebase
 import { initializeApp } from 'firebase/app';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head'
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { BsArrowRightCircle } from "react-icons/bs";
@@ -14,13 +16,18 @@ import { useForm } from 'react-hook-form';
 
 export default function Contact() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const [msg,setmsg]=useState("");
+  const router = useRouter();
   const onSubmit = async (data) => {
     try {
       const docRef = await addDoc(collection(db, 'contact'), data);
+      alert("Your message has been sent successfully.");
       console.log('Form submission successful:', docRef.id);
+      router.push("/");
+
     } catch (error) {
       console.error('Error submitting form:', error);
+      setmsg('Error submitting form!');
     }
   };
 
@@ -48,7 +55,7 @@ export default function Contact() {
 
             <textarea placeholder='Your Message' className='text__black p-1.5 my-1.5 w-3/5 bg-transparent border-4 border-dark__blue rounded-md sm:w-full md:w-full focus:border-main' name="message" {...register('message', { required: true })} />
             {errors.message && <span>This field is required</span>}
-
+            <div className='text-2xl text-center'>{msg}</div>
             <button type="submit" className='border-2 border-current mt-1.5 p-2.5 flex justify-center items-center rounded-md hover:text-dark__blue hover:bg-main'>Submit &nbsp;<BsArrowRightCircle className='inline' /></button>
           </form>
         </div>

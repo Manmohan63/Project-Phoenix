@@ -56,9 +56,45 @@ const SignupForm = ({theme}) => {
   let [showconfirmPassword, setShowconfirmPassword] = useState(false);
   const router=useRouter();
   const App = () => {
-      setTimeout(() => router.push('/profile'), 4000);
+      setTimeout(() => router.push('/'), 4000);
   };
   var str;
+  const[check,setcheck]=useState(false);
+  const[check2,setcheck2]=useState(false);
+  function fetchData(codeforcesId) {
+    fetch(`https://codeforces.com/api/user.info?handles=${codeforcesId}`)
+      .then(response => {
+        if (response.status >= 400) {
+          console.log("Server responds with error!");
+        }
+        return response.json()
+      })
+      .then((data) => {
+        if (data.status == "FAILED") {
+          setErrorMessage('Codeforces User ID is invalid');
+        }
+        else{
+          setcheck(true);
+        }
+      })
+  }
+  function fetchData2(leetcodeId) {
+    fetch(`https://leetcode-stats-api.herokuapp.com/${leetcodeId}`)
+      .then(response => {
+        if (response.status >= 400) {
+          console.log("Server responds with error!");
+        }
+        return response.json()
+      })
+      .then((data) => {
+        if (data.status == "error") {
+          setErrorMessage('Leetcode User ID is invalid');
+        }
+        else {
+          setcheck2(true);
+        }
+      })
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -86,11 +122,17 @@ const SignupForm = ({theme}) => {
     lastname=lastname.trim();
     str = (firstname+" "+lastname);
     console.log(str);
-
+    
     name=str;
-
-   
-    console.log(name);
+    
+    fetchData(codeforcesId);
+    if (!check) {
+      return;
+    }
+    fetchData2(leetcodeId);
+    if (!check2) {
+      return;
+    }
 
     if (!userId||!codeforcesId || !firstname || !lastname || !email || !password || !dob || !city || !leetcodeId || !gender || !state || !collegename || !interestedin) {
       alert('Please fill out all required fields.');

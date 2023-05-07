@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
+import Head from "next/head";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function SignIn({ theme }) {
@@ -23,7 +24,7 @@ export default function SignIn({ theme }) {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log("logged In");
-        router.push("/profile");
+        router.push("/");
       })
       .catch((error) => {
         console.log(error);
@@ -37,6 +38,10 @@ export default function SignIn({ theme }) {
   let style = "text__black w-full p-1.5 my-1.5 bg-transparent border-4 border-dark__blue rounded-md focus:border-main ";
 
   return (
+    <>
+    <Head>
+        <title>Sign In | CP Unofficial</title>
+    </Head>
     <div className='w-full p-4 h-screen justify-center items-center flex flex-col backdrop-blur-sm'>
       <div className='border-4 p-8 flex flex-col items-center justify-center rounded-lg'>
         <h1 className='font-bold text-3xl text-center pb-4'>Log In to Your Account</h1>
@@ -67,5 +72,6 @@ export default function SignIn({ theme }) {
         <div className='mt-4 pt-6'>Need an Account?&nbsp;<Link href='/signup' className='hover:underline'>Sign up</Link></div>
       </div>
     </div>
+    </>
   );
 }

@@ -30,10 +30,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { app, db, auth } from '../../firebaseclient';
 import {RiSendPlaneFill} from 'react-icons/ri';
 
-
+const scrolltobottom = () =>{
+    window.scrollTo({
+      top: 5000000, 
+      behavior: 'smooth'
+    });
+}
 
 const Chat = () => {
   const [user] = useAuthState(auth);
+  scrolltobottom();
   return (
     <>
       <Head>
