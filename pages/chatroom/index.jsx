@@ -34,7 +34,13 @@ import {RiSendPlaneFill} from 'react-icons/ri';
 
 const Chat = () => {
   const [user] = useAuthState(auth);
-  
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -43,6 +49,7 @@ const Chat = () => {
       <div className="App">
         <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{user ? <ChatRoom /> : <Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">You are requested to login with your account to access Chatroom. Thank You!</Link>}</section>
       </div>
+      <div ref={scrollRef}></div>
     </>
   );
 }

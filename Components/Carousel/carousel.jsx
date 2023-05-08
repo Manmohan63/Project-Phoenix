@@ -12,6 +12,7 @@ const images = [
         src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1674826123/Screenshot_2022-09-03_102413_szfbn5.png",
         alt: "image 0",
     },
+   
     {
         src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/279881209_801798817465669_8315301464742405531_n_fi9jvr.jpg",
         alt: "image 1",
@@ -37,8 +38,17 @@ const images = [
         alt: "image 3",
     },
     {
+        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1683541169/1_lkvwbh.png",
+        alt: "image 8",
+    },
+    {
         src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1679239990/302443510_822286705609631_3473952214574021331_n_epcmhf.jpg",
         alt: "image 4",
+    },
+
+    {
+        src: "https://res.cloudinary.com/dk8ign4oc/image/upload/v1683541167/2_rdqypy.png",
+        alt: "image 9",
     },
 ];
 
