@@ -39,17 +39,18 @@ const Blogs = () => {
                 {data.map((d, index) => (
                     <div key={index}>
                         <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
-          hover:box-shadow flex flex-col items-center justify-around lg:h-[20vw] xl:h-[20vw]" title={d.name}>
+          hover:box-shadow flex flex-col items-center justify-around lg:h-[20vw] xl:h-[20vw]" data-aos="fade-up-left" data-aos-duration="3000" title={d.name}>
                             <div className='flex justify-center w-full'>
                                 <Image
                                     src={d.image_address}
                                     alt={d.name}
                                     height={2500}
                                     width={2500}
+                                    data-aos="flip-right" data-aos-duration="3000"
                                     className='border-4 border-solid border-main rounded-md flex justify-center items-center w-[12vw] h-[12vw] sm:h-[60px] sm:w-[60px] sm:m-1 md:h-[200px] md:w-[200px]'
                                 />
                             </div>
-                            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>{d.name}
+                            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center' data-aos="fade-left" data-aos-duration="3000" >{d.name}
                                 <BsBoxArrowUpRight className='mx-2' />&nbsp;</a></h2>
                         </div>
                     </div>
@@ -127,7 +128,7 @@ const Searchcontent = ({searchblogs}) => {
         {searchblogs.map((d, index) => (
           <div key={index}>
             <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
-            hover:box-shadow  flex flex-col items-center justify-around lg:h-[10vw] xl:h-[10vw]">
+            hover:box-shadow  flex flex-col items-center justify-around lg:h-[10vw] xl:h-[10vw]"data-aos="zoom-in" data-aos-duration="3000" >
               {parse(d.title)}
               <h2 className='font-bold text-base'><a href={`https://codeforces.com/blog/entry/${d.id}`} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Blog link
                 <BsBoxArrowUpRight className='mx-2' />&nbsp;</a></h2>

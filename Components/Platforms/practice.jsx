@@ -58,7 +58,7 @@ const Practice = () => {
     ];
     return (
         <>
-            <div className='w-full grid grid-cols-3 grid-template-rows-global md:grid-cols-2 sm:grid-cols-1'>
+            <div className='w-full grid grid-cols-3 grid-template-rows-global md:grid-cols-2 sm:grid-cols-1' data-aos="fade-up-left" data-aos-duration="3000">
                 {data.map((d, index) => (
                     <div key={index}>
                         <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
@@ -69,6 +69,7 @@ const Practice = () => {
                                     alt={d.name}
                                     height={2500}
                                     width={2500}
+                                    data-aos="flip-left" data-aos-duration="3000"
                                     className='border-4 border-solid border-main rounded-md flex justify-center items-center w-[12vw] h-[12vw] sm:h-[60px] sm:w-[60px] sm:m-1 md:h-[200px] md:w-[200px]'
                                 />
                             </div>

@@ -159,7 +159,7 @@ const Searchcontent = ({checked1,checked2,checked3,checked4,checked5,checked6}) 
       <h1 className='text-2xl m-2'>{data__to__show.length} Results Found</h1>
       <span className='mr-2 text-sm italic'>This data will automatically refresh in {counter} minutes</span>
       </div>
-      <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'>
+      <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'data-aos="fade-up-left" data-aos-duration="3000">
         {data__to__show.map((d, index) => (
           <div key={index}>
               <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
@@ -183,6 +183,7 @@ hover:box-shadow flex flex-col items-center justify-around lg:h-[20vw] xl:h-[20v
                           alt={d.site}
                           height={2500}
                           width={2500}
+                          data-aos="flip-left" data-aos-duration="3000"
                           className='border-4 border-solid border-main rounded-md flex justify-center items-center w-[12vw] h-[12vw] sm:h-[60px] sm:w-[60px] sm:m-1 md:h-[200px] md:w-[200px]'
                       />
                   </div>
@@ -232,21 +233,22 @@ const Supported_platforms = () => {
     return (
         <>
             <h1 className='text-3xl md:text-2xl sm:text-2xl font-bold m-2'>Supported Platforms :</h1>
-            <div className='w-full grid grid-cols-3 grid-template-rows-global md:grid-cols-2 sm:grid-cols-1'>
+            <div className='w-full grid grid-cols-3 grid-template-rows-global md:grid-cols-2 sm:grid-cols-1' >
                 {data.map((d, index) => (
                     <div key={index}>
                         <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
-          hover:box-shadow flex flex-col items-center justify-around lg:h-[20vw] xl:h-[20vw]" title={d.name}>
+          hover:box-shadow flex flex-col items-center justify-around lg:h-[20vw] xl:h-[20vw]" data-aos="fade-up" data-aos-duration="3000" title={d.name}>
                             <div className='flex justify-center w-full'>
                                 <Image
                                     src={d.image_address}
                                     alt={d.name}
                                     height={2500}
                                     width={2500}
+                                    data-aos="flip-left" data-aos-duration="3000"
                                     className='border-4 border-solid border-main rounded-md flex justify-center items-center w-[12vw] h-[12vw] sm:h-[60px] sm:w-[60px] sm:m-1 md:h-[200px] md:w-[200px]'
                                 />
                             </div>
-                            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>{d.name}
+                            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" data-aos="fade-left" data-aos-duration="3000" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>{d.name}
                                 <BsBoxArrowUpRight className='mx-2' />&nbsp;</a></h2>
                         </div>
                     </div>
