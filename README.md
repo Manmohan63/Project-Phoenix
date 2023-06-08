@@ -53,7 +53,7 @@ By leveraging these technologies, CpUnofficial delivers a seamless and performan
 # Installation
 To run Project-Phoneix locally, follow these installation instructions:
 1. Clone the repository:
-git clone [https://github.com/username/Project-Phoenix.git] (https://github.com/username/Project-Phoenix.git)
+git clone  https://github.com/username/Project-Phoenix.git
 2. Install the project dependencies:
 npm install
 3. Set up Firebase credentials:
@@ -69,7 +69,7 @@ Access CPUnofficial in your browser at http://localhost:3000.
 
 Created by Manmohan Mandhan and Ishika Poddar with the intention of providing competitive programmers with a platform to enhance their skills and engage with the community. With our passion for programming and commitment to developing a useful resource, we have created Phoenix inpired from CpUnofficial as a one-stop shop for competitive programming enthusiasts.
 
-# Ignite your competitive programming journey with Phoenix . Unleash your coding prowess, connect with a thriving community, and soar to new heights of achievement. Join us today and let your coding brilliance shine bright like a Phoenix!
+ Ignite your competitive programming journey with Phoenix . Unleash your coding prowess, connect with a thriving community, and soar to new heights of achievement. Join us today and let your coding brilliance shine bright like a Phoenix!
 
 
 
