@@ -59,9 +59,9 @@ const FAQ = () => {
   return (
     <div>
       <div className="flex flex-col-reverse justify-between md:flex-row overflow-hidden w-full">
-        <div className="flex flex-col justify-center items-center w-full">
+        <div className="flex flex-col justify-center items-center w-full" data-aos="fade-up" data-aos-duration="3000">
         <div className="text-5xl font-bold">FAQs</div>
-          <div className="xl:w-[40vw] lg:w-[40vw] md:w-full sm:w-full">
+          <div className="xl:w-[40vw] lg:w-[40vw] md:w-full sm:w-full" data-aos="zoom-in" data-aos-duration="3000">
             {questions.map((q, index) => <QnA question={q.question} answer={q.answer} key={index}/>)}
           </div>
         </div>

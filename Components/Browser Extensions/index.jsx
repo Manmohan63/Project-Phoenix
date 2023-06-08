@@ -96,24 +96,25 @@ Chrome extension that makes Codeforces better: supports multiple ratings graph.`
     },
   ];
   return (
-    <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1'>
+    <div className='w-full grid grid-cols-2 grid-template-rows-global md:grid-cols-1 sm:grid-cols-1' data-aos="fade-down-left" data-aos-duration="3000">
       {data.map((d, index) => (
         <div key={index}>
           <div className="m-2 border-2 p-4 rounded-md backdrop-blur-sm 
           hover:box-shadow  flex flex-col items-center justify-around lg:h-[25vw] xl:h-[25vw]" title={d.name}>
             <h1 className='font-bold text-2xl mb-2 md:text-xl sm:text-md'>{d.name}</h1>
             <div className='flex items-start justify-around'>
-              <p className='text-xl lg:text-base sm:text-sm'>{d.desc}</p>
+              <p className='text-xl lg:text-base sm:text-sm'data-aos="zoom-in" data-aos-duration="2000">{d.desc}</p>
               <Image
                 src={d.image_address}
                 alt={d.name}
                 height={80}
                 width={80}
+                data-aos="flip-right" data-aos-duration="3000"
                 className='border-4 border-solid border-main rounded-md flex justify-center items-center h-[80px] w-[80px] m-2 
                 sm:h-[60px] sm:w-[60px] sm:m-1'
               />
             </div>
-            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Web Store
+            <h2 className='font-bold text-base'><a href={d.link} target='blank' type="submit" className='border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center' data-aos="fade-left" data-aos-duration="2000">Web Store
               <BsBoxArrowUpRight className='mx-2' />&nbsp;</a></h2>
           </div>
         </div>
