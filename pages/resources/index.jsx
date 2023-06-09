@@ -8,8 +8,14 @@ import Tools from '../../Components/Programming Tools/index';
 import Platforms from '../../Components/Platforms/practice';
 import YTvideos from '../../Components/YT videos/index';
 import Blogs from '../../Components/Blogs/blogs';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const Index = () => {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const [open1, setopen1] = useState(true);
   const [open2, setopen2] = useState(false);
   const [open3, setopen3] = useState(false);
