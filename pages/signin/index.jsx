@@ -4,14 +4,17 @@
  */
 import { auth } from '@/firebaseclient';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
 import Head from "next/head";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 export default function SignIn({ theme }) {
-
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorp, setErrorp] = useState('')
@@ -42,8 +45,8 @@ export default function SignIn({ theme }) {
     <Head>
         <title>Sign In | CP Unofficial</title>
     </Head>
-    <div className='w-full p-4 h-screen justify-center items-center flex flex-col backdrop-blur-sm'>
-      <div className='border-4 p-8 flex flex-col items-center justify-center rounded-lg'>
+    <div className='w-full p-4 h-screen justify-center items-center flex flex-col backdrop-blur-sm' data-aos="zoom-in"data-aos-duration="3000">
+      <div className='border-4 p-8 flex flex-col items-center justify-center rounded-lg' data-aos="fade-up" data-aos-duration="3000">
         <h1 className='font-bold text-3xl text-center pb-4'>Log In to Your Account</h1>
 
         <form onSubmit={handleSubmit} className='flex flex-col justify-center h-full w-full'>

@@ -41,7 +41,7 @@ const Index = ({name}) => {
     },[counter]);
   return (
     <>
-      <table className="table-fixed w-full text-center border-separate border-main border-2 rounded-md sm:text-xs md:text-sm">
+      <table className="table-fixed w-full text-center border-separate border-main border-2 rounded-md sm:text-xs md:text-sm" data-aos="fade-up" data-aos-duration="3000">
             <thead>
                 <tr>
                     <th className='border-main border-2'>Submission ID</th>

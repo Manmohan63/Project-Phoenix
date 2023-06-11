@@ -9,8 +9,13 @@ import Rating from '../Rating/index'
 import Leetcode_data from '../Leetcode Data/leetcode_data'
 import Image from 'next/image'
 import Link from 'next/link'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Maincontent = ({user,theme}) => {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const [open1, setopen1] = useState(true);
   const [open2, setopen2] = useState(false);
   const [open3, setopen3] = useState(false);
@@ -68,7 +73,7 @@ const Maincontent = ({user,theme}) => {
   return (
   <>
     <div className='border-4 rounded-md m-1 flex justify-between items-center p-10 sm:flex-col-reverse'>
-      <div className="">
+      <div className="" data-aos="fade-right" data-aos-duration="3000">
       <p className="text-4xl font-bold sm:text-2xl">{user.name}</p>
       <p className="text-xl sm:text-lg font-bold">{user.collegename}</p>
       <p className="text-base"><a href={`mailto:${user.email}`} className='hover:underline'>{user.email}</a></p>
@@ -88,13 +93,14 @@ const Maincontent = ({user,theme}) => {
             className={"w-auto h-[15vw] border-4 border-main rounded-md sm:h-[30vw]"}
             width={1500}
             height={1500}
+            data-aos="fade-left" data-aos-duration="3000"
             layout="filled"
           />
-          <Link href="/updateprofile" className=' m-2 font-bold border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center'>Update Profile</Link>
+          <Link href="/updateprofile" className=' m-2 font-bold border-2 border-main p-2 rounded-md hover:text-dark__blue hover:bg-main flex justify-around items-center' data-aos="fade-left" data-aos-duration="3000">Update Profile</Link>
           </div>
     </div>
     <div className=''>
-        <div className='w-full flex items-center border-y-2'>
+        <div className='w-full flex items-center border-y-2' data-aos="fade-up" data-aos-duration="3000">
             <div className={` m-0 p-0 w-1/2 flex items-center justify-center backdrop-blur-sm sm:text-sm ${open1 ? ("text-dark__blue bg-main") : "m-0"}`} onClick={() => {
               setopen1(true);
               setopen2(false);
