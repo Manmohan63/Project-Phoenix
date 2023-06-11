@@ -10,6 +10,8 @@ import React, { useEffect,useRef, useState } from "react";
 import Head from 'next/head'
 import Link from 'next/link'
 import { initializeApp } from "firebase/app";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   getFirestore,
   collection,
@@ -33,6 +35,9 @@ import {RiSendPlaneFill} from 'react-icons/ri';
 
 
 const Chat = () => {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const [user] = useAuthState(auth);
   const scrollRef = useRef(null);
 
@@ -47,7 +52,7 @@ const Chat = () => {
         <title>Chatroom | CP Unofficial</title>
       </Head>
       <div className="App">
-        <section className="min-h-screen backdrop-blur-sm flex justify-center items-center">{user ? <ChatRoom /> : <Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">You are requested to login with your account to access Chatroom. Thank You!</Link>}</section>
+        <section className="min-h-screen backdrop-blur-sm flex justify-center items-center" >{user ? <ChatRoom />: <Link href="/signup" className="border-4 text-2xl p-4 rounded-xl">You are requested to login with your account to access Chatroom. Thank You!</Link>}</section>
       </div>
       <div ref={scrollRef}></div>
     </>
@@ -114,14 +119,14 @@ function ChatRoom() {
 
   return (
     <div className="flex flex-col w-full">
-      <main className= "flex-1 px-4 py-6 min-h-screen backdrop-blur-sm">
+      <main className= "flex-1 px-4 py-6 min-h-screen backdrop-blur-sm" data-aos="fade-up" data-aos-duration="3000">
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
         <span ref={dummy}></span>
       </main>
 
-      <form onSubmit={sendMessage} className="flex items-center py-2 px-2 border-2 m-2 rounded-md">
+      <form onSubmit={sendMessage} className="flex items-center py-2 px-2 border-2 m-2 rounded-md" data-aos="fade-up" data-aos-duation="3000">
         <input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
@@ -137,14 +142,17 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   const messageClass = props.message.uid === auth.currentUser.uid ? "flex-row-reverse" : "flex-row";
   
   return (
     <>
       <div className={`flex ${messageClass} mb-4 items-end`}>
-        <div className="flex flex-col">
-          <p className="text-sm text-gray-500 mb-1">{props.message.displayName}</p>
-          <p className={` bg-main  text-dark__blue rounded-lg p-2 text-white max-w-3xl break-all ${messageClass === "flex-row" ? "bg-gray-100 text-gray-700" : "bg-blue-500"}`}>{props.message.text}</p>
+        <div className="flex flex-col"  >
+          <p className="text-sm text-gray-500 mb-1"  >{props.message.displayName}</p>
+          <p className={` bg-main  text-dark__blue rounded-lg p-2 text-white max-w-3xl break-all ${messageClass === "flex-row" ? "bg-gray-100 text-gray-700" : "bg-blue-500"}`} data-aos="zoom-in" data-aos-duration="3000">{props.message.text}</p>
         </div>
       </div>
     </>

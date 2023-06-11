@@ -41,7 +41,7 @@ const Index = ({name}) => {
     let new_data = data.reverse();
   return (
     <>
-      <table className="table-fixed w-full text-center border-separate border-main border-2 rounded-md sm:text-xs">
+      <table className="table-fixed w-full text-center border-separate border-main border-2 rounded-md sm:text-xs" data-aos="fade-up" data-aos-duration="3000">
             <thead>
                 <tr>
                     <th className='border-main border-2'>#</th>

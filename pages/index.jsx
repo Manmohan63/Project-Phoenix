@@ -23,7 +23,7 @@ const Index = ({theme}) => {
         <title>Home | CP Unofficial</title>
       </Head>
     <div className='flex items-center flex-col backdrop-blur-sm'>
-      <div className="flex flex-col items-center justify-start w-full" data-aos="fade-up" data-aos-duration="3000">
+      <div className="flex flex-col items-center justify-start w-full" >
         <Carousel theme={theme}/>
       </div>
       <div className='flex justify-around items-around p-2.5 pb-12'>
