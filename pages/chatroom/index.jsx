@@ -10,8 +10,8 @@ import React, { useEffect,useRef, useState } from "react";
 import Head from 'next/head'
 import Link from 'next/link'
 import { initializeApp } from "firebase/app";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 import {
   getFirestore,
   collection,
@@ -35,9 +35,9 @@ import {RiSendPlaneFill} from 'react-icons/ri';
 
 
 const Chat = () => {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   const [user] = useAuthState(auth);
   const scrollRef = useRef(null);
 
@@ -142,9 +142,9 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   const messageClass = props.message.uid === auth.currentUser.uid ? "flex-row-reverse" : "flex-row";
   
   return (

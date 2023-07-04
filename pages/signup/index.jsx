@@ -19,8 +19,8 @@ import { useRouter } from 'next/router'
 import Link from 'next/link';
 import Head from 'next/head';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 const firebaseConfig = {
 
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -36,9 +36,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const SignupForm = ({theme}) => {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   let [codeforcesId, setCodeforcesId] = useState('');
   let [leetcodeId, setLeetcodeId] = useState('');
   // let [name, setName] = useState('');

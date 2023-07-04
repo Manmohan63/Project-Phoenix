@@ -9,12 +9,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
 import Head from "next/head";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 export default function SignIn({ theme }) {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorp, setErrorp] = useState('')
