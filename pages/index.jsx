@@ -10,13 +10,13 @@ import Faq from '../Components/FAQ/FAQ';
 import Link from 'next/link';
 import Head from 'next/head'
 import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+// import 'aos/dist/aos.css';
+// import { useEffect } from 'react';
 
 const Index = ({theme}) => {
-    useEffect(() => {
-        AOS.init();
-      }, [])
+    // useEffect(() => {
+    //     AOS.init();
+    //   }, [])
   return (
     <>
       <Head>
