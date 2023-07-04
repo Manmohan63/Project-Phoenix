@@ -9,13 +9,13 @@ import Rating from '../Rating/index'
 import Leetcode_data from '../Leetcode Data/leetcode_data'
 import Image from 'next/image'
 import Link from 'next/link'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 
 const Maincontent = ({user,theme}) => {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   const [open1, setopen1] = useState(true);
   const [open2, setopen2] = useState(false);
   const [open3, setopen3] = useState(false);
