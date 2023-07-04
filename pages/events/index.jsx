@@ -2,14 +2,14 @@ import React,{useState,useEffect} from 'react'
 import Head from 'next/head'
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import Image from 'next/image';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 // import { useEffect } from 'react';
 
 const Index = () => {
-  useEffect(() => {
-    AOS.init();
-  }, [])
+  // useEffect(() => {
+  //   AOS.init();
+  // }, [])
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
   const [checked3, setChecked3] = useState(false);

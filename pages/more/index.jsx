@@ -10,14 +10,14 @@ import Head from 'next/head'
 import { useState } from 'react';
 import Tools from '../../Components/Programming Tools/index';
 import Browser_extensions from '../../Components/Browser Extensions/index';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 
 const More = () => {
-    useEffect(() => {
-        AOS.init();
-      }, [])
+    // useEffect(() => {
+    //     AOS.init();
+    //   }, [])
     const [open, setopen] = useState(true);
     return (
         <>
